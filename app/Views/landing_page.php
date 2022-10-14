@@ -67,7 +67,7 @@
   <div class="hero min-h-screen bg-base-200 mt-12">
     <div class="hero-content text-center">
       <div class="max-w-4xl">
-        <h1 class="text-5xl font-bold leading-normal">HAI ! Mahasiswa Berpengalaman<br>Temukan Aksi & Petualanganmu<br>Di Sini</h1>
+        <h1 class="text-5xl font-bold leading-normal">Jadilah Mahasiswa Berpengalaman<br>Temukan Aksi & Petualanganmu<br>Di Sini</h1>
         <p class="py-6">Kejar Impianmu Dengan Bangun Karier<br>Sejak Bangku Kuliah</p>
         <a href="/Sign/signIn" class="btn btn-primary px-10">Mulai</a>
       </div>
