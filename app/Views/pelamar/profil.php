@@ -6,15 +6,15 @@
   <div class="grid w-auto" style="grid-template-columns: 20% 5% 60%;">
     <div class="h-full place-items-start">
       <ul class="menu card rounded-box bg-base-300 md:w-56 fixed">
-        <li><a class="active">Profil</a></li>
-        <li><a class="">Histori</a></li>
+        <li><a href="#" class="active">Profil</a></li>
+        <li><a href="/Pelamar/historiLamaran">Histori</a></li>
       </ul>
     </div>
     <div class="divider divider-horizontal"></div>
     <div class="h-fit card rounded-box place-items-center w-full pb-5 overflow-y-auto">
       <div class="avatar mb-8">
         <div class="w-48 rounded">
-          <img src="https://placeimg.com/192/192/people" />
+          <img src="/img/pelamar/<?= $pelamar['foto_profil']; ?>" alt="<?= $pelamar['foto_profil']; ?>"/>
         </div>
       </div>
       <label class="input-group input-group-vertical">
@@ -24,6 +24,10 @@
       <label class="input-group input-group-vertical mt-5">
         <span>Email</span>
         <div class="rounded-box border-2 p-3"><?= $pelamar['email']; ?></div>
+      </label>
+      <label class="input-group input-group-vertical mt-5">
+        <span>Username</span>
+        <div class="rounded-box border-2 p-3"><?= $pelamar['username']; ?></div>
       </label>
       <label class="input-group input-group-vertical mt-5">
         <span>Nomor Telepon</span>
@@ -51,19 +55,21 @@
         <div class="lisensi-dan-sertifikasi w-full">
           <label class="input-group input-group-vertical mt-5">
             <span>Lisensi dan Sertifikasi</span>
-            <div class="border-2 p-3">Muhamad Taufik Satya</div> 
-            <div class="rounded-box border-x-2 border-b-2 p-3">Muhamad Taufik Satya</div>
+            <?php foreach ($lis_and_ser as $ls) : ?>
+            <div class="rounded-none border-x-2 border-b-2 p-3"><?= $ls['ls']; ?></div>
+            <?php endforeach; ?>
           </label>
         </div>
         <div class="id-kredensial w-full">
           <label class="input-group input-group-vertical mt-5">
             <span>ID Kredensial</span>
-            <div class="border-2 p-3">Muhamad Taufik Satya</div> 
-            <div class="rounded-box border-x-2 border-b-2 p-3">Muhamad Taufik Satya</div>
+            <?php foreach ($lis_and_ser as $ls) : ?>
+            <div class="rounded-none border-x-2 border-b-2 p-3"><?= $ls['id_kred']; ?></div>
+            <?php endforeach; ?>
           </label>
         </div>
       </div>
-      <a href="" class="btn btn-secondary my-12">Edit Profil</a>
+      <a href="/Pelamar/editProfil/<?= $pelamar['id_pelamar']; ?>" class="btn btn-secondary my-12">Edit Profil</a>
     </div>
   </div>
 </div>
