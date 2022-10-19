@@ -8,6 +8,13 @@
   <title><?= $title; ?></title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body class="overflow-x-hidden">
@@ -31,8 +38,8 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li><a href="" class="opt">Dashboard</a></li>
-        <li><a class="opt active">Magang</a></li>
+        <li><a href="" class="opt active">Dashboard</a></li>
+        <li><a class="opt">Magang</a></li>
         <li><a class="opt">Part-Time</a></li>
         <li><a class="opt">Volunteer</a></li>
       </ul>
@@ -87,6 +94,20 @@
         </svg></a>
     </div>
   </footer>
+
+  <script>
+    function previewImg() {
+      const fotoProfil = document.querySelector('#fotoProfil');
+      const imgPreview = document.querySelector('.img-preview');
+
+      const fotoProfilFile = new FileReader();
+      fotoProfilFile.readAsDataURL(fotoProfil.files[0]);
+
+      fotoProfilFile.onload = function(e) {
+        imgPreview.src = e.target.result;
+      }
+    }
+  </script>
 
 </body>
 
