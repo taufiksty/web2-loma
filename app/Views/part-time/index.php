@@ -1,4 +1,4 @@
-<?= $this->extend('layout/pelamar/template_magang'); ?>
+<?= $this->extend('layout/pelamar/template_volunteer'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -17,9 +17,9 @@
     <tbody>
       <tr class="hover">
         <td>1</td>       
-        <th>PT Sampoerna</th>
-        <td>Sosial Media<br>Strategist</td>
-        <td>15 Mei 2021</td>
+        <th>Unicef</th>
+        <td>Peer Conselor</td>
+        <td>15 Januari 2022</td>
         <td><a class="btn btn-active btn-primary">Detail</a></td>
       </tr>
       <tr class="hover">
