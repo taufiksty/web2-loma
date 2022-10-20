@@ -29,7 +29,7 @@
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
           <li><a href="" class="opt">Dashboard</a></li>
-          <li><a class="opt active">Magang</a></li>
+          <li><a href="/Magang/index" class="opt active">Magang</a></li>
           <li><a class="opt">Part-Time</a></li>
           <li><a class="opt">Volunteer</a></li>
         </ul>
@@ -39,7 +39,7 @@
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
         <li><a href="" class="opt active">Dashboard</a></li>
-        <li><a class="opt">Magang</a></li>
+        <li><a href="/Magang/index" class="opt">Magang</a></li>
         <li><a class="opt">Part-Time</a></li>
         <li><a class="opt">Volunteer</a></li>
       </ul>
