@@ -12,9 +12,17 @@
     </div>
     <div class="divider divider-horizontal"></div>
     <div class="h-fit card rounded-box place-items-center w-full pb-5 overflow-y-auto">
+      <?php if (!empty(session()->getFlashdata('message'))) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <?php echo session()->getFlashdata('message'); ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php endif; ?>
       <div class="avatar mb-8">
         <div class="w-48 rounded">
-          <img src="/img/pelamar/<?= $pelamar['foto_profil']; ?>" alt="<?= $pelamar['foto_profil']; ?>"/>
+          <img src="/img/pelamar/<?= $pelamar['foto_profil']; ?>" alt="<?= $pelamar['foto_profil']; ?>" />
         </div>
       </div>
       <label class="input-group input-group-vertical">
@@ -34,8 +42,12 @@
         <div class="rounded-box border-2 p-3"><?= $pelamar['no_telp']; ?></div>
       </label>
       <label class="input-group input-group-vertical mt-5">
-        <span>Tempat, Tanggal Lahir</span>
-        <div class="rounded-box border-2 p-3"><?= $pelamar['ttl']; ?></div>
+        <span>Alamat Tempat Tinggal</span>
+        <div class="rounded-box border-2 p-3"><?= $pelamar['alamat']; ?></div>
+      </label>
+      <label class="input-group input-group-vertical mt-5">
+        <span>Tanggal Lahir</span>
+        <div class="rounded-box border-2 p-3"><?= $pelamar['tl']; ?></div>
       </label>
       <label class="input-group input-group-vertical mt-5">
         <span>Gender</span>
@@ -56,7 +68,7 @@
           <label class="input-group input-group-vertical mt-5">
             <span>Lisensi dan Sertifikasi</span>
             <?php foreach ($lis_and_ser as $ls) : ?>
-            <div class="rounded-none border-x-2 border-b-2 p-3"><?= $ls['ls']; ?></div>
+              <div class="rounded-none border-x-2 border-b-2 p-3"><?= $ls['ls']; ?></div>
             <?php endforeach; ?>
           </label>
         </div>
@@ -64,7 +76,7 @@
           <label class="input-group input-group-vertical mt-5">
             <span>ID Kredensial</span>
             <?php foreach ($lis_and_ser as $ls) : ?>
-            <div class="rounded-none border-x-2 border-b-2 p-3"><?= $ls['id_kred']; ?></div>
+              <div class="rounded-none border-x-2 border-b-2 p-3"><?= $ls['id_kred']; ?></div>
             <?php endforeach; ?>
           </label>
         </div>

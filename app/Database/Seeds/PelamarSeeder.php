@@ -22,8 +22,11 @@ class PelamarSeeder extends Seeder
 
       $data = [
         'id_pelamar' => $id_pelamar,
+        'nama' => $faker->name,
         'username' => $faker->userName,
         'email' => $faker->email,
+        'no_telp' => $faker->phoneNumber,
+        'alamat' => $faker->address,
         'created_at' => Time::createFromTimestamp($faker->unixTime()),
         'updated_at' => Time::now()
       ];

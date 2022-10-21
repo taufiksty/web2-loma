@@ -8,7 +8,7 @@ class PelamarModel extends Model
 {
   protected $table = 'pelamar';
   protected $useTimestamps = true;
-  protected $allowedFields = ['id_pelamar', 'nama', 'username', 'email', 'no_telp', 'ttl', 'gender', 'univ', 'prodi'];
+  protected $allowedFields = ['id_pelamar', 'nama', 'username', 'email', 'no_telp', 'alamat', 'tl', 'gender', 'univ', 'prodi'];
 
   public function getPelamar($id_pelamar)
   {

@@ -35,7 +35,12 @@ class Pelamar extends Migration
         'constraint' => '20',
         'null' => true,
       ],
-      'ttl' => [
+      'alamat' => [
+        'type' => 'VARCHAR',
+        'constraint' => '255',
+        'null' => true,
+      ],
+      'tl' => [
         'type' => 'DATE',
         'null' => true,
       ],

@@ -31,13 +31,14 @@ class Pelamar extends BaseController
     $data = [
       'title' => 'Loma | Edit Profil',
       'pelamar' => $this->PelamarModel->getPelamar($id_pelamar),
+      'lis_and_ser' => $this->LisAndSerModel->getLisAndSer($id_pelamar),
       'validation' => \Config\Services::validation()
     ];
 
     return view('pelamar/edit_profil', $data);
   }
 
-  public function simpan()
+  public function simpan($id_pelamar)
   {
     if (!$this->validate([
       'fotoProfil' => [
@@ -61,8 +62,35 @@ class Pelamar extends BaseController
         ]
       ],
     ])) {
-      return redirect()->to('/pelamar/edit_profil')->withInput();
+      return redirect()->to('/Pelamar/editProfil/'.$id_pelamar)->withInput();
     }
+
+    // Taking photo profile
+    $fotoProfil = $this->request->getFile('fotoProfil');
+    // If the photo profile not uploaded
+    if ($fotoProfil->getError() == 4) {
+      $nameFile = $this->request->getVar('fotoProfilOld');
+    } else {
+      // Take photo profile name as random
+      $nameFile = $fotoProfil->getRandomName();
+      // Move photo profile to public/img
+      $fotoProfil->move('img/pelamar', $nameFile);
+    }
+
+    $this->PelamarModel->replace([
+      'nama' => $this->request->getVar('nama'),
+      'no_telp' => $this->request->getVar('no_telp'),
+      'alamat' => $this->request->getVar('alamat'),
+      'tl' => $this->request->getVar('tl'),
+      'gender' => $this->request->getVar('gender'),
+      'univ' => $this->request->getVar('univ'),
+      'prodi' => $this->request->getVar('prodi'),
+      'foto_profil' => $nameFile
+    ]);
+
+    session()->setFlashdata('message', 'Profil Berhasil Diubah.');
+
+    return redirect()->to('/Pelamar/index/'.$this->request->getVar('id_pelamar'));
   }
 
   public function historiLamaran()

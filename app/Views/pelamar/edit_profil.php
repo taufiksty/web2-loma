@@ -11,21 +11,12 @@
     </div>
     <div class="divider divider-horizontal"></div>
 
-    <form action="/Pelamar/editProfil/<?= $pelamar['id_pelamar']; ?>" method="POST" enctype="multipart/form-data">
+    <form action="/Pelamar/simpan/<?= $pelamar['id_pelamar']; ?>" method="POST" enctype="multipart/form-data">
       <?= csrf_field(); ?>
 
       <input type="hidden" name="fotoProfilOld" value="<?= $pelamar['foto_profil']; ?>">
 
       <div class="h-fit card rounded-box place-items-center w-full pb-5 overflow-y-auto">
-
-        <?php if (!empty(session()->getFlashdata('message'))) : ?>
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <?php echo session()->getFlashdata('message'); ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        <?php endif; ?>
 
         <div class="avatar mb-8 flex flex-row gap-x-7">
           <div class="w-48 rounded basis-1/2">
@@ -65,15 +56,20 @@
 
         <label class="input-group input-group-vertical mt-5">
           <span>Nomor Telepon</span>
-          <input type="number" class="input input-bordered input-display <?= ($validation->hasError('no_telp')) ? 'is-invalid' : ''; ?>" id="no_telp" name="no_telp" value="<?= (old('no_telp')) ? old('no_telp') : $pelamar['no_telp']; ?>" placeholder="cth. 08979320117" />
+          <input type="text" class="input input-bordered input-display <?= ($validation->hasError('no_telp')) ? 'is-invalid' : ''; ?>" id="no_telp" name="no_telp" value="<?= (old('no_telp')) ? old('no_telp') : $pelamar['no_telp']; ?>" placeholder="cth. 08979320117"/>
         </label>
         <label class="label w-full hidden invalid:block">
           <span class="label-text-alt invalid:text-red-500"><?= $validation->getError('no_telp'); ?></span>
         </label>
 
         <label class="input-group input-group-vertical mt-5">
-          <span>Tempat, Tanggal Lahir</span>
-          <input type="text" class="input input-bordered input-display" id="ttl" name="ttl" value="<?= (old('ttl')) ? old('ttl') : $pelamar['ttl']; ?>" placeholder="cth. Jakarta, 9 Juli 2002" />
+          <span>Alamat Tempat Tinggal</span>
+          <input type="text" class="input input-bordered input-display" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $pelamar['alamat']; ?>" placeholder="cth. Jl. Wahid Khasim No.38, Limo, Depok, Jawa Barat" />
+        </label>
+
+        <label class="input-group input-group-vertical mt-5">
+          <span>Tanggal Lahir</span>
+          <input type="date" class="input input-bordered input-display" id="tl" name="tl" value="<?= (old('tl')) ? old('tl') : $pelamar['tl']; ?>" />
         </label>
 
         <label class="input-group input-group-vertical mt-5">
@@ -95,30 +91,35 @@
         <br><br>
         <label class="input-group input-group-vertical mt-5">
           <span>Asal Universitas</span>
-          <input type="text" class="input input-bordered input-display" id="nama" name="nama" value="<?= old('nama'); ?>" />
+          <input type="text" class="input input-bordered input-display" id="univ" name="univ" value="<?= (old('univ')) ? old('univ') : $pelamar['univ']; ?>" />
         </label>
+
         <label class="input-group input-group-vertical mt-5">
           <span>Program Studi</span>
-          <input type="text" class="input input-bordered input-display" id="nama" name="nama" value="<?= old('nama'); ?>" />
+          <input type="text" class="input input-bordered input-display" id="prodi" name="prodi" value="<?= (old('prodi')) ? old('prodi') : $pelamar['prodi']; ?>" />
         </label>
+        
         <br><br>
+        <p class="text-left text-xs">(Maksimal 5 Lisensi atau Sertifikasi)</p>
         <div class="grid grid-cols-2 gap-4 w-full">
           <div class="lisensi-dan-sertifikasi w-full">
-            <label class="input-group input-group-vertical mt-5">
-              <span>Lisensi dan Sertifikasi</span>
-              <div class="border-2 p-3">Muhamad Taufik Satya</div>
-              <div class="rounded-box border-x-2 border-b-2 p-3">Muhamad Taufik Satya</div>
-            </label>
+          <label class="input-group input-group-vertical mt-5">
+            <span>Lisensi dan Sertifikasi</span>
+            <?php foreach ($lis_and_ser as $ls) : ?>
+            <input type="text" class="rounded-none border-x-2 border-b-2 p-3" id="ls" name="ls" value="<?= (old('ls')) ? old('ls') : $ls['ls']; ?>" />
+            <?php endforeach; ?>
+          </label>
           </div>
           <div class="id-kredensial w-full">
-            <label class="input-group input-group-vertical mt-5">
-              <span>ID Kredensial</span>
-              <div class="border-2 p-3">Muhamad Taufik Satya</div>
-              <div class="rounded-box border-x-2 border-b-2 p-3">Muhamad Taufik Satya</div>
-            </label>
+          <label class="input-group input-group-vertical mt-5">
+            <span>ID Kredensial</span>
+            <?php foreach ($lis_and_ser as $ls) : ?>
+            <input type="text" class="rounded-none border-x-2 border-b-2 p-3" id="id_kred" name="id_kred" value="<?= (old('id_kred')) ? old('id_kred') : $ls['id_kred']; ?>" />
+            <?php endforeach; ?>
+          </label>
           </div>
         </div>
-        <a href="" class="btn btn-accent my-12 px-12">Simpan</a>
+        <button type="submit" class="btn btn-accent my-12 px-12">Simpan</button>
       </div>
     </form>
   </div>
