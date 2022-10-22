@@ -38,6 +38,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'LandingPage::index');
 $routes->get('/pelamar/index/{:any}', 'Pelamar::index/$1');
 $routes->get('/magang/{:num}', 'Magang::index/$1');
+$routes->get('/magang/detail_lowongan', 'Magang::detai_lowongan');  
 
 /*
  * --------------------------------------------------------------------
