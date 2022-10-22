@@ -26,14 +26,7 @@
             <p>1. Membuat content calendar baik mingguan atau bulanan</p>       
             <p>2. Berinteraksi dengan costumer dalam akun media sosial dari brand yang diurus</p>
             <p>3. Membalas komentar, melempar pertanyaan, posting konten yang engaging</p>
-            <p>4. Penempatan di Jakarta Timur</p>
-        </div>
-        <h2 class="text-4xl">Deskripsi Pekerjaan</h2><br>   
-        <div class="text-2xl">
-            <p>1. Membuat content calendar baik mingguan atau bulanan</p>       
-            <p>2. Berinteraksi dengan costumer dalam akun media sosial dari brand yang diurus</p>
-            <p>3. Membalas komentar, melempar pertanyaan, posting konten yang engaging</p>
-            <p>4. Penempatan di Jakarta Timur</p>
+            <p>4. Penempatan di Jakarta Timur</p><br>
         </div>
         <h2 class="text-4xl">Benefit dan Lain-lain</h2><br>   
         <div class="text-2xl">
