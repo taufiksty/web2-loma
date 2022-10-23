@@ -6,12 +6,12 @@
   <div class="grid w-auto" style="grid-template-columns: 20% 5% 60%;">
     <div class="h-full place-items-start">
       <ul class="menu card rounded-box bg-base-300 md:w-56 fixed">
-        <li><a href="/Pelamar/index/<?= $pelamar['id_pelamar']; ?>" class="active hover:font-semibold">Profil</a></li>
+        <li><a href="/Pelamar/index/<?= $pelamar['id']; ?>" class="active hover:font-semibold">Profil</a></li>
       </ul>
     </div>
     <div class="divider divider-horizontal"></div>
 
-    <form action="/Pelamar/simpan/<?= $pelamar['id_pelamar']; ?>" method="POST" enctype="multipart/form-data">
+    <form action="/Pelamar/simpan/<?= $pelamar['id']; ?>" method="POST" enctype="multipart/form-data">
       <?= csrf_field(); ?>
 
       <input type="hidden" name="fotoProfilOld" value="<?= $pelamar['foto_profil']; ?>">

@@ -27,6 +27,7 @@ class PelamarSeeder extends Seeder
         'email' => $faker->email,
         'no_telp' => $faker->phoneNumber,
         'alamat' => $faker->address,
+        'foto_profil' => 'Jisoo.jpg',
         'created_at' => Time::createFromTimestamp($faker->unixTime()),
         'updated_at' => Time::now()
       ];

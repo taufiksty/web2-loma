@@ -8,11 +8,11 @@ class PelamarModel extends Model
 {
   protected $table = 'pelamar';
   protected $useTimestamps = true;
-  protected $allowedFields = ['id_pelamar', 'nama', 'username', 'email', 'no_telp', 'alamat', 'tl', 'gender', 'univ', 'prodi'];
+  protected $allowedFields = ['id', 'nama', 'username', 'email', 'no_telp', 'alamat', 'tl', 'gender', 'univ', 'prodi', 'foto_profil'];
 
-  public function getPelamar($id_pelamar)
+  public function getPelamar($id)
   {
-    return $this->where(['id_pelamar' => $id_pelamar])->first();
+    return $this->where(['id' => $id])->first();
   }
 
 }

@@ -10,12 +10,20 @@ class LisAndSerSeeder extends Seeder
     public function run()
     {
         $data = [
-            'id_pelamar' => 19211101,
-            'ls' => 'Machine Learning Dasar - Dicoding',
-            'id_kred' => 'MLD-3298782',
-            'updated_at' => Time::now()
+            [
+                'id_pelamar' => 19211101,
+                'ls' => 'Machine Learning Dasar - Dicoding',
+                'id_kred' => 'MLD-3298782',
+                'updated_at' => Time::now()
+            ],
+            [
+                'id_pelamar' => 19211101,
+                'ls' => 'Backend Developer - Meta',
+                'id_kred' => 'META-123101',
+                'updated_at' => Time::now()
+            ]
         ];
 
-        $this->db->query('INSERT INTO lis_and_ser (id_pelamar, ls, id_kred, updated_at) VALUES(:id_pelamar:, :ls:, :id_kred:, :updated_at:)', $data);
+        $this->db->table('lis_and_ser')->insertBatch($data);
     }
 }

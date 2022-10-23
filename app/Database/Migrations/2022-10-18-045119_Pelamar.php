@@ -9,7 +9,7 @@ class Pelamar extends Migration
   public function up()
   {
     $this->forge->addField([
-      'id_pelamar' => [
+      'id' => [
         'type'           => 'INT',
         'constraint'     => 8,
         'unsigned'       => true,
@@ -73,7 +73,7 @@ class Pelamar extends Migration
         'null' => true,
       ],
     ]);
-    $this->forge->addKey('id_pelamar', true);
+    $this->forge->addKey('id', true);
     $this->forge->createTable('pelamar');
   }
 

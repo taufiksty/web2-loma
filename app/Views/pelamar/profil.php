@@ -81,7 +81,7 @@
           </label>
         </div>
       </div>
-      <a href="/Pelamar/editProfil/<?= $pelamar['id_pelamar']; ?>" class="btn btn-secondary my-12">Edit Profil</a>
+      <a href="/Pelamar/editProfil/<?= $pelamar['id']; ?>" class="btn btn-secondary my-12">Edit Profil</a>
     </div>
   </div>
 </div>

@@ -15,30 +15,30 @@ class Pelamar extends BaseController
     $this->LisAndSerModel = new LisAndSerModel();
   }
 
-  public function index($id_pelamar)
+  public function index($id)
   {
     $data = [
       'title' => 'Loma | Profil',
-      'pelamar' => $this->PelamarModel->getPelamar($id_pelamar),
-      'lis_and_ser' => $this->LisAndSerModel->getLisAndSer($id_pelamar)
+      'pelamar' => $this->PelamarModel->getPelamar($id),
+      'lis_and_ser' => $this->LisAndSerModel->getLisAndSer($id)
     ];
 
     return view('pelamar/profil', $data);
   }
 
-  public function editProfil($id_pelamar)
+  public function editProfil($id)
   {
     $data = [
       'title' => 'Loma | Edit Profil',
-      'pelamar' => $this->PelamarModel->getPelamar($id_pelamar),
-      'lis_and_ser' => $this->LisAndSerModel->getLisAndSer($id_pelamar),
+      'pelamar' => $this->PelamarModel->getPelamar($id),
+      'lis_and_ser' => $this->LisAndSerModel->getLisAndSer($id),
       'validation' => \Config\Services::validation()
     ];
 
     return view('pelamar/edit_profil', $data);
   }
 
-  public function simpan($id_pelamar)
+  public function simpan($id)
   {
     if (!$this->validate([
       'fotoProfil' => [
@@ -62,7 +62,7 @@ class Pelamar extends BaseController
         ]
       ],
     ])) {
-      return redirect()->to('/Pelamar/editProfil/'.$id_pelamar)->withInput();
+      return redirect()->to('/Pelamar/editProfil/'.$id)->withInput();
     }
 
     // Taking photo profile
@@ -77,7 +77,8 @@ class Pelamar extends BaseController
       $fotoProfil->move('img/pelamar', $nameFile);
     }
 
-    $this->PelamarModel->replace([
+    $this->PelamarModel->save([
+      'id' => $id,
       'nama' => $this->request->getVar('nama'),
       'no_telp' => $this->request->getVar('no_telp'),
       'alamat' => $this->request->getVar('alamat'),
@@ -90,7 +91,7 @@ class Pelamar extends BaseController
 
     session()->setFlashdata('message', 'Profil Berhasil Diubah.');
 
-    return redirect()->to('/Pelamar/index/'.$this->request->getVar('id_pelamar'));
+    return redirect()->to('/Pelamar/index/'.$id);
   }
 
   public function historiLamaran()
