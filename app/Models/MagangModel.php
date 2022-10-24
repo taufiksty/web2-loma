@@ -8,14 +8,10 @@ class MagangModel extends Model
 {
   protected $table = 'magang';
   protected $useTimestamps = true;
-  protected $allowedFields = ['title', 'slug', 'author', 'publisher', 'cover'];
+  protected $allowedFields = ['id_rekruter', 'tipe', 'posisi', 'lama_kegiatan', 'deadline'];
 
-  public function getBooks($slug = false)
+  public function getLowongan($tipe)
   {
-    if ($slug == false) {
-      return $this->findAll();
-    }
-
-    return $this->where(['slug' => $slug])->first();
+    return $this->where(['tipe' => $tipe])->findAll();
   }
 }

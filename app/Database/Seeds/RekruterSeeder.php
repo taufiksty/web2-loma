@@ -3,26 +3,25 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
-use CodeIgniter\I18n\Time;
 
-class PelamarSeeder extends Seeder
+class RekruterSeeder extends Seeder
 {
   public function run()
   {
     $faker = \Faker\Factory::create('id_ID');
     $id = 0;
 
-    for ($i = 0; $i < 5; $i++) {
+    for ($i = 0; $i < 6; $i++) {
 
       if ($i == 0) {
-        $id = 19211101;
+        $id = 18211101;
       } else {
         $id += 1;
       }
 
       $data = [
         'id' => $id,
-        'nama' => $faker->name,
+        'id_rekruter' => '',
         'username' => $faker->userName,
         'email' => $faker->email,
         'no_telp' => $faker->phoneNumber,

@@ -59,8 +59,8 @@
       </ul>
     </div>
     <div class="navbar-end">
-      <a class="btn btn-ghost">Daftar</a>
-      <a href="/Sign/signIn" class="btn btn-primary mx-5 hover:bg-primary-focus">Masuk</a>
+      <a href="<?= base_url(); ?>/Sign/SignOut" class="btn btn-ghost">Daftar</a>
+      <a href="<?= base_url(); ?>/Sign/signIn" class="btn btn-primary mx-5 hover:bg-primary-focus">Masuk</a>
     </div>
   </div>
 
@@ -76,7 +76,7 @@
 
   <div class="hero min-h-screen bg-base-200" id="tentang">
     <div class="hero-content flex-col lg:flex-row">
-      <img src="img/landing_page/about.jpg" class="max-w-sm rounded-lg shadow-2xl" />
+      <img src="<?= base_url(); ?>/img/landing_page/about.jpg" class="max-w-sm rounded-lg shadow-2xl" />
       <div>
         <h1 class="text-5xl font-bold">Loma.</h1>
         <p class="py-6 text-justify">Loma atau Lowongan Mahasiswa merupakan sebuah website penyedia lowongan khusus untuk mahasiswa aktif di seluruh Indonesia. Loma menyediakan kesempatan alternatif bagi mahasiswa untuk mencari pengalaman dan petualangan.</p>

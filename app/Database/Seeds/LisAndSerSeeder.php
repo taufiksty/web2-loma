@@ -11,13 +11,13 @@ class LisAndSerSeeder extends Seeder
     {
         $data = [
             [
-                'id_pelamar' => 19211101,
+                'id' => 19211101,
                 'ls' => 'Machine Learning Dasar - Dicoding',
                 'id_kred' => 'MLD-3298782',
                 'updated_at' => Time::now()
             ],
             [
-                'id_pelamar' => 19211101,
+                'id' => 19211101,
                 'ls' => 'Backend Developer - Meta',
                 'id_kred' => 'META-123101',
                 'updated_at' => Time::now()

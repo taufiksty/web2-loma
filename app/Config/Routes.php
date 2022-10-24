@@ -38,7 +38,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'LandingPage::index');
 $routes->get('/pelamar/(:num)', 'Pelamar::index/$1');
 $routes->get('/magang', 'Magang::index');
-$routes->get('/magang/{:num}', 'Magang::detailLowongan/$1');  
+$routes->get('/magang/(:num)', 'Magang::detailLowongan/$1');  
 
 /*
  * --------------------------------------------------------------------
