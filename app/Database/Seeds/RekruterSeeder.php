@@ -3,6 +3,7 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+use CodeIgniter\I18n\Time;
 
 class RekruterSeeder extends Seeder
 {
@@ -21,17 +22,19 @@ class RekruterSeeder extends Seeder
 
       $data = [
         'id' => $id,
-        'id_rekruter' => '',
+        'id_rekruter' => $id,
+        'nama_perusahaan' => $faker->company,
         'username' => $faker->userName,
-        'email' => $faker->email,
-        'no_telp' => $faker->phoneNumber,
-        'alamat' => $faker->address,
-        'foto_profil' => 'Jisoo.jpg',
+        'email' => $faker->companyEmail,
+        'no_telp_hr' => $faker->phoneNumber,
+        'alamat_perusahaan' => $faker->address,
+        'tentang' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae reiciendis architecto a voluptates rerum temporibus officia eaque debitis, ad, ullam facere iure. Doloremque inventore quam, expedita nesciunt dolorum ratione beatae!',
+        'foto_logo' => 'logo_perusahaan.png',
         'created_at' => Time::createFromTimestamp($faker->unixTime()),
         'updated_at' => Time::now()
       ];
 
-      $this->db->table('pelamar')->insert($data);
+      $this->db->table('rekruter')->insert($data);
     }
   }
 }
