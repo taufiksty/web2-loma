@@ -47,7 +47,7 @@
       </label>
       <label class="input-group input-group-vertical mt-5">
         <span>Tanggal Lahir</span>
-        <div class="rounded-box border-2 p-3"><?= $pelamar['ttl']; ?></div>
+        <div class="rounded-box border-2 p-3"><?= $pelamar['tl']; ?></div>
       </label>
       <label class="input-group input-group-vertical mt-5">
         <span>Gender</span>
