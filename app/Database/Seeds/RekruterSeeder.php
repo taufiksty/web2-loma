@@ -12,7 +12,7 @@ class RekruterSeeder extends Seeder
     $faker = \Faker\Factory::create('id_ID');
     $id = 0;
 
-    for ($i = 0; $i < 6; $i++) {
+    for ($i = 0; $i < 16; $i++) {
 
       if ($i == 0) {
         $id = 18211101;

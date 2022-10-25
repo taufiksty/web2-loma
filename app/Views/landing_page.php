@@ -29,7 +29,7 @@
               </svg>
             </a>
             <ul class="p-2 bg-base-100">
-              <li><a>Magang</a></li>
+              <li><a href="<?= base_url(); ?>/magang">Magang</a></li>
               <li><a>Part-Time</a></li>
               <li><a>Volunteer</a></li>
             </ul>
@@ -50,7 +50,7 @@
             </svg>
           </a>
           <ul class="p-2 px-5 bg-base-100">
-            <li><a>Magang</a></li>
+            <li><a href="<?= base_url(); ?>/magang">Magang</a></li>
             <li><a>Part-Time</a></li>
             <li><a>Volunteer</a></li>
           </ul>

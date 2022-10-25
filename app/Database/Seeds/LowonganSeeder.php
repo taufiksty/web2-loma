@@ -5,7 +5,7 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use CodeIgniter\I18n\Time;
 
-class MagangSeeder extends Seeder
+class LowonganSeeder extends Seeder
 {
   public function run()
   {
@@ -13,7 +13,7 @@ class MagangSeeder extends Seeder
     $id = 0;
     $id_rekruter = 0;
 
-    for ($i = 0; $i < 30; $i++) {
+    for ($i = 0; $i < 80; $i++) {
 
       if ($i == 0) {
         $id = 20103111;
@@ -30,14 +30,14 @@ class MagangSeeder extends Seeder
       $data = [
         'id' => $id,
         'id_rekruter' => $id_rekruter,
-        'tipe' => 'Magang',
+        'tipe' => $faker->randomElement(['Magang', 'Parttime', 'Volunteer']),
         'posisi' => 'UI/UX Designer',
         'lama_kegiatan' => 6,
         'deadline' => $faker->date,
         'updated_at' => Time::now()
       ];
 
-      $this->db->table('magang')->insert($data);
+      $this->db->table('lowongan')->insert($data);
     }
   }
 }
