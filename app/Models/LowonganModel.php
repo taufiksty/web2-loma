@@ -12,7 +12,7 @@ class LowonganModel extends Model
 
   public function getMagang($tipe = 'Magang', int $paginate)
   {
-    return $this->join('rekruter', 'rekruter.id_rekruter=lowongan.id_rekruter')->where(['tipe'=> $tipe])->paginate($paginate, 'magang');
+    return $this->select('*')->join('rekruter', 'rekruter.id_rekruter=lowongan.id_rekruter')->where(['tipe'=> $tipe])->paginate($paginate, 'magang');
   }
 
   public function search($keyword)

@@ -21,7 +21,6 @@ class RekruterSeeder extends Seeder
       }
 
       $data = [
-        'id' => $id,
         'id_rekruter' => $id,
         'nama_perusahaan' => $faker->company,
         'username' => $faker->userName,

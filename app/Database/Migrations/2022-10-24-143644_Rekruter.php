@@ -9,16 +9,11 @@ class Rekruter extends Migration
   public function up()
   {
     $this->forge->addField([
-      'id' => [
+      'id_rekruter' => [
         'type'           => 'INT',
         'constraint'     => 8,
         'unsigned'       => true,
         'auto_increment' => true,
-      ],
-      'id_rekruter' => [
-        'type' => 'INT',
-        'constraint' => 8,
-        'null' => false,
       ],
       'nama_perusahaan' => [
         'type' => 'VARCHAR',
@@ -64,7 +59,7 @@ class Rekruter extends Migration
         'null' => true,
       ],
     ]);
-    $this->forge->addKey('id', true);
+    $this->forge->addKey('id_rekruter', true);
     $this->forge->createTable('rekruter');
   }
 
