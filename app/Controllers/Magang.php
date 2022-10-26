@@ -37,10 +37,11 @@ class Magang extends BaseController
     return view('magang/index', $data);
   }
   
-  public function detailLowongan()
+  public function detailLowongan($id)
   {
     $data = [
       'title' => 'Loma | Magang',
+      ''
     ];
 
     return view('magang/detail_lowongan', $data);

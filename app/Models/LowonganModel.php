@@ -10,15 +10,13 @@ class LowonganModel extends Model
   protected $useTimestamps = true;
   protected $allowedFields = ['id_rekruter', 'tipe', 'posisi', 'lama_kegiatan', 'deadline'];
 
-  // public function getLowongan($tipe)
-  // {
-  //   return $this->where(['tipe' => $tipe])->findAll();
-  // }
-
   public function getMagang($tipe = 'Magang', int $paginate)
   {
-    return $this->select()->where(['tipe'=> $tipe])->join('rekruter', 'rekruter.id_rekruter=lowongan.id_rekruter')->paginate($paginate, 'magang');
+    return $this->join('rekruter', 'rekruter.id_rekruter=lowongan.id_rekruter')->where(['tipe'=> $tipe])->paginate($paginate, 'magang');
   }
 
-
+  public function search($keyword)
+  {
+    return $this->like('posisi', $keyword)->orLike('nama_perusahaan', $keyword);
+  }
 }
