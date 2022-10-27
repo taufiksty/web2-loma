@@ -30,6 +30,11 @@ class Lowongan extends Migration
         'constraint' => '100',
         'null' => false,
       ],
+      'wilayah_penempatan' => [
+        'type' => 'VARCHAR',
+        'constraint' => '100',
+        'null' => false
+      ],
       'lama_kegiatan' => [
         'type' => 'INT',
         'constraint' => 5,

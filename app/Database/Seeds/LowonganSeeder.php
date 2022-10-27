@@ -31,7 +31,8 @@ class LowonganSeeder extends Seeder
         'id' => $id,
         'id_rekruter' => $id_rekruter,
         'tipe' => $faker->randomElement(['Magang', 'Parttime', 'Volunteer']),
-        'posisi' => 'UI/UX Designer',
+        'posisi' => $faker->randomElement(['UI/UX Designer', 'Social Media Specialist', 'IT Support', 'Content Writer', 'Frontend Engineer', 'Backend Engineer', 'Data Analyst', 'Desain Grafis', 'Android Developer', 'Admin Finance']),
+        'wilayah_penempatan' => $faker->city,
         'lama_kegiatan' => 6,
         'deadline' => $faker->date,
         'updated_at' => Time::now()

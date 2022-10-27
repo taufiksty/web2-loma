@@ -69,7 +69,7 @@
 
         <label class="input-group input-group-vertical mt-5">
           <span>Tanggal Lahir</span>
-          <input type="date" class="input input-bordered input-display" id="ttl" name="tl" value="<?= (old('tl')) ? old('tl') : $pelamar['ttl']; ?>" />
+          <input type="date" class="input input-bordered input-display" id="tl" name="tl" value="<?= (old('tl')) ? old('tl') : $pelamar['tl']; ?>" />
         </label>
 
         <label class="input-group input-group-vertical mt-5">
