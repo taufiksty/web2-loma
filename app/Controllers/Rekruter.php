@@ -23,6 +23,14 @@ class Rekruter extends BaseController
     return view('rekruter/profil', $data);
   }
 
+  public function editProfil($id_rekruter)
+  {
+    $data = [
+      'title' => 'Loma | Edit Profil',
+      'rekruter' => $this->RekruterModel->getRekruter($id_rekruter)
+    ]
+  }
+
   public function daftarLowongan()
   {
     return view('rekruter/daftar_lowongan');
