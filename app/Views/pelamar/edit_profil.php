@@ -95,7 +95,7 @@
         </label>
 
         <label class="input-group input-group-vertical mt-5">
-          <span>Program Studi</span>
+          <span>Program</span>
           <input type="text" class="input input-bordered input-display" id="prodi" name="prodi" value="<?= (old('prodi')) ? old('prodi') : $pelamar['prodi']; ?>" />
         </label>
         
