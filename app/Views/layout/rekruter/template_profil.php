@@ -28,7 +28,7 @@
           </svg>
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="<?= base_url(); ?>/Rekruter/index" class="opt active">Profil</a></li>
+          <li><a href="<?= base_url(); ?>/Rekruter/index/<?= $rekruter['id']; ?>" class="opt active">Profil</a></li>
           <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt">Daftar Lowongan</a></li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li><a href="<?= base_url(); ?>/Rekruter/index" class="opt active">Profil</a></li>
+        <li class="mr-4"><a href="<?= base_url(); ?>/Rekruter/index/<?= $rekruter['id']; ?>" class="opt active">Profil</a></li>
         <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt">Daftar Lowongan</a></li>
       </ul>
     </div>
@@ -52,7 +52,7 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="https://placeimg.com/80/80/people" />
+            <img src="<?= base_url(); ?>/img/rekruter/<?= $rekruter['foto_logo']; ?>" />
           </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -90,6 +90,20 @@
         </svg></a>
     </div>
   </footer>
+
+  <script>
+    function previewImg() {
+      const fotoLogo = document.querySelector('#fotoLogo');
+      const imgPreview = document.querySelector('.img-preview');
+
+      const fotoLogoFile = new FileReader();
+      fotoLogoFile.readAsDataURL(fotoLogo.files[0]);
+
+      fotoLogoFile.onload = function(e) {
+        imgPreview.src = e.target.result;
+      }
+    }
+  </script>
 
 </body>
 
