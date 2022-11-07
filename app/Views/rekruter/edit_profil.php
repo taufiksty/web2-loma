@@ -70,7 +70,7 @@
 
       <label class="input-group input-group-vertical mt-5">
         <span>Tentang Perusahaan</span>
-        <textarea type="text" class="input input-bordered input-display <?= ($validation->hasError('tentang')) ? 'is-invalid' : ''; ?>" id="tentangPerusahaan" name="tentang" value="<?= (old('tentang')) ? old('tentang') : $rekruter['tentang']; ?>"><?= (old('tentang')) ? old('tentang') : $rekruter['tentang']; ?></textarea>
+        <textarea type="text" class="textarea textarea-bordered input-display <?= ($validation->hasError('tentang')) ? 'is-invalid' : ''; ?>" id="tentangPerusahaan" name="tentang" value="<?= (old('tentang')) ? old('tentang') : $rekruter['tentang']; ?>"><?= (old('tentang')) ? old('tentang') : $rekruter['tentang']; ?></textarea>
       </label>
       <label class="label w-full invalid:block">
         <span class="label-text-alt text-red-500"><?= $validation->getError('tentang'); ?></span>

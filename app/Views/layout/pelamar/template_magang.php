@@ -21,20 +21,20 @@
           </svg>
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="" class="opt">Dashboard</a></li>
-          <li><a href="/Magang/index" class="opt active">Magang</a></li>
-          <li><a class="opt">Part-Time</a></li>
-          <li><a class="opt">Volunteer</a></li>
+          <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt">Dashboard</a></li>
+          <li><a href="<?= base_url(); ?>/Magang/index" class="opt active">Magang</a></li>
+          <li><a href="<?= base_url(); ?>/PartTime/index" class="opt">Part-Time</a></li>
+          <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
         </ul>
       </div>
       <a href="/LandingPage" class="btn btn-ghost normal-case text-2xl md:ml-5">Loma.</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li><a href="" class="opt">Dashboard</a></li>
-        <li><a href="/Magang/index"class="opt active">Magang</a></li>
-        <li><a class="opt">Part-Time</a></li>
-        <li><a class="opt">Volunteer</a></li>
+        <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt">Dashboard</a></li>
+        <li><a href="<?= base_url(); ?>/Magang/index"class="opt active">Magang</a></li>
+        <li><a href="<?= base_url(); ?>/PartTime/index" class="opt">Part-Time</a></li>
+        <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
       </ul>
     </div>
     <div class="navbar-end mr-5 px-2">

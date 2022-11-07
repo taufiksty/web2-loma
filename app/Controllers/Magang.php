@@ -3,19 +3,34 @@
 namespace App\Controllers;
 
 use App\Models\LowonganModel;
+use App\Models\RekruterModel;
+use App\Models\DLKualifikasiModel;
+use App\Models\DLDeskripsiModel;
+use App\Models\DLBenefitdllModel;
+
+use CodeIgniter\I18n\Time;
+use DateTime;
 
 class Magang extends BaseController
 {
   protected $LowonganModel;
+  protected $RekruterModel;
+  protected $DLKualifikasiModel;
+  protected $DLDeskripsiModel;
+  protected $DLBenefitdllModel;
 
   public function __construct()
   {
     $this->LowonganModel = new LowonganModel();
+    $this->RekruterModel = new RekruterModel();
+    $this->DLKualifikasiModel = new DLKualifikasiModel();
+    $this->DLDeskripsiModel = new DLDeskripsiModel();
+    $this->DLBenefitdllModel = new DLBenefitdllModel();
   }
 
   public function index()
   {
-    $currentPage = $this->request->getVar('page_magang') ? $this->request->getVar('page_magang') : 1;
+    $currentPage = $this->request->getVar('page_Magang') ? $this->request->getVar('page_Magang') : 1;
 
     $keyword = $this->request->getVar('keyword');
     if ($keyword) {
@@ -28,7 +43,7 @@ class Magang extends BaseController
       'title' => 'Loma | Magang',
       // 'magang' => $this->MagangModel->getLowongan('Magang'),
       // 'magang' => $this->MagangModel->getLowongan('Magang')
-      'magang' => $magang->getMagang('Magang', 10),
+      'magang' => $magang->getLowongan('Magang', 10),
       'pager' => $magang->pager,
       'current_page' => $currentPage
     ];
@@ -39,11 +54,22 @@ class Magang extends BaseController
   
   public function detailLowongan($id)
   {
+    $detail_magang = $this->LowonganModel->getDetailLowongan('Magang', $id);
+    
+    $tgl_update = new DateTime($detail_magang[0]['updated_at']);
+    $tgl_now = Time::now();
+    $interval = $tgl_now->diff($tgl_update);
+
     $data = [
-      'title' => 'Loma | Magang',
-      ''
+      'title' => 'Loma | Detail Lowongan',
+      'detail_magang' => $detail_magang,
+      'interval' => $interval->days,
+      'dl_kualifikasi' => $this->DLKualifikasiModel->getDLKualifikasi($id),
+      'dl_deskripsi' => $this->DLDeskripsiModel->getDLDeskripsi($id),
+      'dl_benefit' => $this->DLBenefitdllModel->getDLBenefitdll($id),
     ];
 
+    // dd($data['detail_magang']);
     return view('magang/detail_lowongan', $data);
   }
 }

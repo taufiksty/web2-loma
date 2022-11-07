@@ -42,7 +42,7 @@
     <?php endforeach; ?>
   </table>
   <div class="mt-14 text-center">
-    <?= $pager->links('magang', 'lowongan_pagination'); ?>
+    <?= $pager->links('Magang', 'lowongan_pagination'); ?>
   </div>
 </div>
 
