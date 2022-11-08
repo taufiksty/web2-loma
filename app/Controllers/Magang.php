@@ -72,4 +72,25 @@ class Magang extends BaseController
     // dd($data['detail_magang']);
     return view('magang/detail_lowongan', $data);
   }
+
+  public function detailDaftarLowongan($id)
+  {
+    $detail_magang = $this->LowonganModel->getDetailLowongan('Magang', $id);
+    
+    $tgl_update = new DateTime($detail_magang[0]['updated_at']);
+    $tgl_now = Time::now();
+    $interval = $tgl_now->diff($tgl_update);
+
+    $data = [
+      'title' => 'Loma | Detail Lowongan',
+      'detail_magang' => $detail_magang,
+      'interval' => $interval->days,
+      'dl_kualifikasi' => $this->DLKualifikasiModel->getDLKualifikasi($id),
+      'dl_deskripsi' => $this->DLDeskripsiModel->getDLDeskripsi($id),
+      'dl_benefit' => $this->DLBenefitdllModel->getDLBenefitdll($id),
+    ];
+
+    // dd($data['detail_magang']);
+    return view('magang/detail_daftar_lowongan', $data);
+  }
 }

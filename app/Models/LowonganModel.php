@@ -26,4 +26,14 @@ class LowonganModel extends Model
 
     return $this->select('lowongan.id, lowongan.id_rekruter, lowongan.tipe, lowongan.posisi, lowongan.wilayah_penempatan, lowongan.lama_kegiatan, lowongan.deadline, lowongan.updated_at, rekruter.nama_perusahaan, rekruter.foto_logo, rekruter.tentang')->join('rekruter', 'rekruter.id=lowongan.id_rekruter')->where($where_array)->find();
   } 
+
+  public function getDaftarLowongan(int $id_rekruter, int $paginate)
+  {
+    return $this->select('lowongan.id, lowongan.id_rekruter, lowongan.tipe, lowongan.posisi, lowongan.deadline, lowongan.updated_at')->where(['id_rekruter'=> $id_rekruter])->orderBy('updated_at', 'DESC')->paginate($paginate, 'DaftarLowongan');
+  }
+
+  public function searchDaftarLowongan($keyword)
+  {
+    return $this->like('tipe', $keyword)->orLike('posisi', $keyword);
+  }
 }

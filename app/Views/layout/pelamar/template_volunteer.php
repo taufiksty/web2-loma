@@ -23,7 +23,7 @@
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
           <li><a href="<?= base_url(); ?>/Pelamar/" class="opt">Dashboard</a></li>
           <li><a href="<?= base_url(); ?>/Magang/index" class="opt">Magang</a></li>
-          <li><a href="<?= base_url(); ?>/PartTime/index" class="opt">Part-Time</a></li>
+          <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
           <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt active">Volunteer</a></li>
         </ul>
       </div>
@@ -33,7 +33,7 @@
       <ul class="navbar-options menu menu-horizontal p-0">
         <li><a href="<?= base_url(); ?>/Pelamar/" class="opt">Dashboard</a></li>
         <li><a href="<?= base_url(); ?>/Magang/index" class="opt">Magang</a></li>
-        <li><a href="<?= base_url(); ?>/PartTime/index" class="opt">Part-Time</a></li>
+        <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
         <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt active">Volunteer</a></li>
       </ul>
     </div>

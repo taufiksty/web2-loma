@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\RekruterModel;
+use App\Models\LowonganModel;
 
 class Rekruter extends BaseController
 {
@@ -11,6 +12,7 @@ class Rekruter extends BaseController
   public function __construct()
   {
     $this->RekruterModel = new RekruterModel();
+    $this->LowonganModel = new LowonganModel();
   }
 
   public function index($id)
@@ -109,11 +111,24 @@ class Rekruter extends BaseController
     return redirect()->to('/Rekruter/index/' . $id);
   }
 
-  public function daftarLowongan()
+  public function daftarLowongan($id)
   {
+    $currentPage = $this->request->getVar('page_DaftarLowongan') ? $this->request->getVar('page_DaftarLowongan') : 1;
+
+    $keyword = $this->request->getVar('keyword');
+    if ($keyword) {
+      $daftar_lowongan = $this->LowonganModel->searchDaftarLowongan($keyword);
+    } else {
+      $daftar_lowongan = $this->LowonganModel;
+    }
+
     $data = [
-      'title' => 'Loma | Daftar Lowongan'
+      'title' => 'Loma | Daftar Lowongan',
+      'daftar_lowongan' => $daftar_lowongan->getDaftarLowongan($id, 10),
+      'pager' => $daftar_lowongan->pager,
+      'current_page' => $currentPage
     ];
+
     return view('rekruter/daftar_lowongan', $data);
   }
 }

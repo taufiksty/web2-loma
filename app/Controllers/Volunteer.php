@@ -72,4 +72,25 @@ class Volunteer extends BaseController
     // dd($data['detail_volunteer']);
     return view('volunteer/detail_lowongan', $data);
   }
+
+  public function detailDaftarLowongan($id)
+  {
+    $detail_volunteer = $this->LowonganModel->getDetailLowongan('Volunteer', $id);
+
+    $tgl_update = new DateTime($detail_volunteer[0]['updated_at']);
+    $tgl_now = Time::now();
+    $interval = $tgl_now->diff($tgl_update);
+
+    $data = [
+      'title' => 'Loma | Detail Lowongan',
+      'detail_volunteer' => $detail_volunteer,
+      'interval' => $interval->days,
+      'dl_kualifikasi' => $this->DLKualifikasiModel->getDLKualifikasi($id),
+      'dl_deskripsi' => $this->DLDeskripsiModel->getDLDeskripsi($id),
+      'dl_benefit' => $this->DLBenefitdllModel->getDLBenefitdll($id),
+    ];
+
+    // dd($data['detail_volunteer']);
+    return view('volunteer/detail_daftar_lowongan', $data);
+  }
 }

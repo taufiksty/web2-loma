@@ -30,7 +30,7 @@
             </a>
             <ul class="p-2 bg-base-100">
               <li><a href="<?= base_url(); ?>/magang">Magang</a></li>
-              <li><a href="<?= base_url(); ?>/PartTime/index">Part-Time</a></li>
+              <li><a href="<?= base_url(); ?>/Parttime/index">Part-Time</a></li>
               <li><a href="<?= base_url(); ?>/Volunteer/index">Volunteer</a></li>
             </ul>
           </li>
@@ -51,7 +51,7 @@
           </a>
           <ul class="p-2 px-5 bg-base-100">
             <li><a href="<?= base_url(); ?>/magang">Magang</a></li>
-            <li><a href="<?= base_url(); ?>/PartTime/index">Part-Time</a></li>
+            <li><a href="<?= base_url(); ?>/Parttime/index">Part-Time</a></li>
             <li><a href="<?= base_url(); ?>/Volunteer/index">Volunteer</a></li>
           </ul>
         </li>
