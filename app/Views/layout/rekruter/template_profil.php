@@ -28,7 +28,7 @@
           </svg>
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="<?= base_url(); ?>/Rekruter/index/<?= $rekruter['id']; ?>" class="opt active">Profil</a></li>
+          <li><a href="<?= base_url(); ?>/Rekruter/index/" class="opt active">Profil</a></li>
           <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt">Daftar Lowongan</a></li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li class="mr-4"><a href="<?= base_url(); ?>/Rekruter/index/<?= $rekruter['id']; ?>" class="opt active">Profil</a></li>
+        <li class="mr-4"><a href="<?= base_url(); ?>/Rekruter/index/" class="opt active">Profil</a></li>
         <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt">Daftar Lowongan</a></li>
       </ul>
     </div>

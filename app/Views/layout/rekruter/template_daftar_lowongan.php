@@ -28,7 +28,7 @@
           </svg>
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="<?= base_url(); ?>/Rekruter/index/<?= $rekruter['id']; ?>" class="opt active">Profil</a></li>
+          <li><a href="<?= base_url(); ?>/Rekruter/index/" class="opt active">Profil</a></li>
           <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt">Daftar Lowongan</a></li>
         </ul>
       </div>
@@ -36,8 +36,8 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li class="mr-4"><a href="<?= base_url(); ?>/Rekruter/index/<?= $rekruter['id']; ?>" class="opt active">Profil</a></li>
-        <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt">Daftar Lowongan</a></li>
+        <li class="mr-4"><a href="<?= base_url(); ?>/Rekruter/index/" class="opt">Profil</a></li>
+        <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt active">Daftar Lowongan</a></li>
       </ul>
     </div>
     <div class="navbar-end mr-5 px-2">
@@ -52,7 +52,7 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="<?= base_url(); ?>/img/rekruter/<?= $rekruter['foto_logo']; ?>" />
+            <img src="<?= base_url(); ?>/img/rekruter/" />
           </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -70,7 +70,7 @@
 
   <?= $this->renderSection('content'); ?>
 
-  <footer class="footer items-center p-4 bg-neutral text-neutral-content">
+  <footer class="absolute b-0 footer items-center p-4 bg-neutral text-neutral-content">
     <div class="items-center grid-flow-col">
       <a href="#">
         <h1 class="text-xl font-bold">Loma.</h1>

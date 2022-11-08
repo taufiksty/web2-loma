@@ -111,6 +111,9 @@ class Rekruter extends BaseController
 
   public function daftarLowongan()
   {
-    return view('rekruter/daftar_lowongan');
+    $data = [
+      'title' => 'Loma | Daftar Lowongan'
+    ];
+    return view('rekruter/daftar_lowongan', $data);
   }
 }
