@@ -7,7 +7,7 @@
 
   <div class="h-fit card place-items-center mt-28 px-72 w-full pb-5 overflow-y-auto" style="border: 1px solid red;">
 
-    <p class="mb-10 font-bold text-2xl">Form Tambah Lowongan</p>
+    <p class="mb-10 font-bold text-2xl">Form Tambah</p>
 
     <label class="input-group input-group-vertical">
       <span>Jenis Lowongan</span>
