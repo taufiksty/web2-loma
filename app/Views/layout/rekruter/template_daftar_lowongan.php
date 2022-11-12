@@ -8,6 +8,13 @@
   <title><?= $title; ?></title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body class="overflow-x-hidden">
@@ -21,20 +28,16 @@
           </svg>
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt">Dashboard</a></li>
-          <li><a href="<?= base_url(); ?>/Magang/index" class="opt active">Magang</a></li>
-          <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
-          <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
+          <li><a href="<?= base_url(); ?>/Rekruter/index/" class="opt active">Profil</a></li>
+          <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt">Daftar Lowongan</a></li>
         </ul>
       </div>
       <a href="/LandingPage" class="btn btn-ghost normal-case text-2xl md:ml-5">Loma.</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt">Dashboard</a></li>
-        <li><a href="<?= base_url(); ?>/Magang/index"class="opt active">Magang</a></li>
-        <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
-        <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
+        <li class="mr-4"><a href="<?= base_url(); ?>/Rekruter/index/" class="opt">Profil</a></li>
+        <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt active">Daftar Lowongan</a></li>
       </ul>
     </div>
     <div class="navbar-end mr-5 px-2">
@@ -49,7 +52,7 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="https://placeimg.com/80/80/people" />
+            <img src="<?= base_url(); ?>/img/rekruter/" />
           </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -59,7 +62,7 @@
               <span class="badge hidden">New</span>
             </a>
           </li>
-          <li><a>Logout</a></li>
+          <li><a href="/logout">Logout</a></li>
         </ul>
       </div>
     </div>
@@ -67,7 +70,7 @@
 
   <?= $this->renderSection('content'); ?>
 
-  <footer class="footer items-center p-4 bg-neutral text-neutral-content">
+  <footer class="absolute b-0 footer items-center p-4 bg-neutral text-neutral-content">
     <div class="items-center grid-flow-col">
       <a href="#">
         <h1 class="text-xl font-bold">Loma.</h1>
@@ -87,6 +90,20 @@
         </svg></a>
     </div>
   </footer>
+
+  <script>
+    function previewImg() {
+      const fotoLogo = document.querySelector('#fotoLogo');
+      const imgPreview = document.querySelector('.img-preview');
+
+      const fotoLogoFile = new FileReader();
+      fotoLogoFile.readAsDataURL(fotoLogo.files[0]);
+
+      fotoLogoFile.onload = function(e) {
+        imgPreview.src = e.target.result;
+      }
+    }
+  </script>
 
 </body>
 

@@ -21,7 +21,7 @@ class RekruterSeeder extends Seeder
       }
 
       $data = [
-        'id_rekruter' => $id,
+        'id' => $id,
         'nama_perusahaan' => $faker->company,
         'username' => $faker->userName,
         'email' => $faker->companyEmail,
@@ -33,7 +33,7 @@ class RekruterSeeder extends Seeder
         'updated_at' => Time::now()
       ];
 
-      $this->db->table('rekruter')->insert($data);
+          $this->db->table('rekruter')->insert($data);
     }
   }
 }

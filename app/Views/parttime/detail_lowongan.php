@@ -1,22 +1,22 @@
-<?= $this->extend('layout/pelamar/template_magang'); ?>
+<?= $this->extend('layout/pelamar/template_parttime'); ?>
 
 <?= $this->section('content'); ?>
 
 <div class="flex flex-col w-full lg:flex-row my-24">
-  <div class="sticky top-20 px-14 h-full card rounded-box place-items-center" >
+  <div class="sticky top-20 px-14 h-full card rounded-box place-items-center">
     <div class="avatar">
       <div class="w-28 rounded">
-        <img src="<?= base_url(); ?>/img/rekruter/<?= $detail_magang[0]['foto_logo']; ?>" />
+        <img src="<?= base_url(); ?>/img/rekruter/<?= $detail_parttime[0]['foto_logo']; ?>" />
       </div>
     </div>
-    <p class="mt-4 font-bold text-xl"><?= $detail_magang[0]['posisi']; ?></p>
-    <p class="mt-4 font-semibold text-lg"><?= $detail_magang[0]['nama_perusahaan']; ?></p>
-    <p class="mt-4 text-lg"><?= $detail_magang[0]['wilayah_penempatan']; ?></p>
+    <p class="mt-4 font-bold text-xl"><?= $detail_parttime[0]['posisi']; ?></p>
+    <p class="mt-4 font-semibold text-lg"><?= $detail_parttime[0]['nama_perusahaan']; ?></p>
+    <p class="mt-4 text-lg"><?= $detail_parttime[0]['wilayah_penempatan']; ?></p>
     <p class="mt-4 text-lg">Ditayangkan pada <?= $interval; ?> hari yang lalu</p>
   </div>
 
   <div class="grid flex-grow h-full card rounded-box place-items-center px-14 pt-5">
-    <p class="font-extrabold text-2xl"><?= $detail_magang[0]['tipe']; ?> (<?= $detail_magang[0]['lama_kegiatan']; ?> bulan)</p>
+    <p class="font-extrabold text-2xl"><?= $detail_parttime[0]['tipe']; ?> (<?= $detail_parttime[0]['lama_kegiatan']; ?> bulan)</p>
 
     <div class="card w-full bg-slate-100 shadow-xl mt-7">
       <div class="card-body">

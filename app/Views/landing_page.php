@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loma | Lowongan Mahasiswa</title>
+  <title>Loma | Lowongan mahasiswa</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -30,8 +30,8 @@
             </a>
             <ul class="p-2 bg-base-100">
               <li><a href="<?= base_url(); ?>/magang">Magang</a></li>
-              <li><a>Part-Time</a></li>
-              <li><a>Volunteer</a></li>
+              <li><a href="<?= base_url(); ?>/Parttime/index">Part-Time</a></li>
+              <li><a href="<?= base_url(); ?>/Volunteer/index">Volunteer</a></li>
             </ul>
           </li>
           <li><a href="#kontak-kami">Kontak Kami</a></li>
@@ -51,8 +51,8 @@
           </a>
           <ul class="p-2 px-5 bg-base-100">
             <li><a href="<?= base_url(); ?>/magang">Magang</a></li>
-            <li><a>Part-Time</a></li>
-            <li><a>Volunteer</a></li>
+            <li><a href="<?= base_url(); ?>/Parttime/index">Part-Time</a></li>
+            <li><a href="<?= base_url(); ?>/Volunteer/index">Volunteer</a></li>
           </ul>
         </li>
         <li><a href="#kontak-kami">Kontak Kami</a></li>

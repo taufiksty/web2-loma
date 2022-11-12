@@ -2186,6 +2186,7 @@
         },
         {
             "name": "symfony/deprecation-contracts",
+<<<<<<< HEAD
             "version": "v3.1.1",
             "source": {
                 "type": "git",
@@ -2200,11 +2201,31 @@
             },
             "require": {
                 "php": ">=8.1"
+=======
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/deprecation-contracts.git",
+                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
+                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2"
+>>>>>>> 1452f3b94a11e1757ea1be234c4fd87713d74eb6
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-main": "3.1-dev"
+=======
+                    "dev-main": "3.0-dev"
+>>>>>>> 1452f3b94a11e1757ea1be234c4fd87713d74eb6
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -2233,7 +2254,11 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/deprecation-contracts/tree/v3.1.1"
+=======
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.2"
+>>>>>>> 1452f3b94a11e1757ea1be234c4fd87713d74eb6
             },
             "funding": [
                 {
@@ -2249,7 +2274,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-02-25T11:15:52+00:00"
+=======
+            "time": "2022-01-02T09:55:41+00:00"
+>>>>>>> 1452f3b94a11e1757ea1be234c4fd87713d74eb6
         },
         {
             "name": "theseer/tokenizer",
