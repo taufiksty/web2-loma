@@ -131,4 +131,14 @@ class Rekruter extends BaseController
 
     return view('rekruter/daftar_lowongan', $data);
   }
+
+  public function tambahLowongan($id)  
+  {
+    $data = [
+      'title' => 'Loma | Tambah Lowongan',
+      'rekruter' => $this->RekruterModel->getRekruter($id)
+    ];
+
+    return view('rekruter/tambah_lowongan', $data);
+  }
 }
