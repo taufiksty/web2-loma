@@ -35,7 +35,7 @@
           <td><?= $no++; ?></td>
           <th><?= $v['nama_perusahaan']; ?></th>
           <td><?= $v['posisi']; ?></td>
-          <td><?= $v['deadline']; ?></td>
+          <td><?= date('d-m-Y', strtotime($v['deadline'])); ?></td>
           <td><a href="<?= base_url(); ?>/Volunteer/detailLowongan/<?= $v['id']; ?>" class="btn btn-active btn-primary">Detail</a></td>
         </tr>
       </tbody>

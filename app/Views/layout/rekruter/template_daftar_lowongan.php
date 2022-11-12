@@ -8,6 +8,8 @@
   <title><?= $title; ?></title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </script>
   <style>
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -92,17 +94,41 @@
   </footer>
 
   <script>
-    function previewImg() {
-      const fotoLogo = document.querySelector('#fotoLogo');
-      const imgPreview = document.querySelector('.img-preview');
 
-      const fotoLogoFile = new FileReader();
-      fotoLogoFile.readAsDataURL(fotoLogo.files[0]);
+    $(document).ready(function() {
+      $('#tambahKualifikasi').click(function() {
+        const inputKualifikasi = document.querySelectorAll('#inputKualifikasi input');
+        let n = inputKualifikasi.length + 1;
+        $('#inputKualifikasi').append(`<input type="text" class="input input-bordered input-display" id="kualifikasi${n}" name="kualifikasi" value="" placeholder="Masukkan kualifikasi" />`);
+      })
+      $('#hapusKualifikasi').click(function() {
+        const inputKualifikasi = document.querySelectorAll('#inputKualifikasi input');
+        let n = inputKualifikasi.length;
+        $(`#kualifikasi${n}`).remove();
+      })
 
-      fotoLogoFile.onload = function(e) {
-        imgPreview.src = e.target.result;
-      }
-    }
+      $('#tambahDeskripsi').click(function() {
+        const inputDeskripsi = document.querySelectorAll('#inputDeskripsi input');
+        let n = inputDeskripsi.length + 1;
+        $('#inputDeskripsi').append(`<input type="text" class="input input-bordered input-display" id="deskripsiPekerjaan${n}" name="deskripsi" value="" placeholder="Masukkan deskripsi" />`);
+      })
+      $('#hapusDeskripsi').click(function() {
+        const inputDeskripsi = document.querySelectorAll('#inputDeskripsi input');
+        let n = inputDeskripsi.length;
+        $(`#deskripsiPekerjaan${n}`).remove();
+      })
+
+      $('#tambahBenefit').click(function() {
+        const inputBenefit = document.querySelectorAll('#inputBenefit input');
+        let n = inputBenefit.length + 1;
+        $('#inputBenefit').append(`<input type="text" class="input input-bordered input-display" id="benefitDll${n}" name="benefit" value="" placeholder="Masukkan benefit dll" />`);
+      })
+      $('#hapusBenefit').click(function() {
+        const inputBenefit = document.querySelectorAll('#inputBenefit input');
+        let n = inputBenefit.length;
+        $(`#benefitDll${n}`).remove();
+      })
+    })
   </script>
 
 </body>

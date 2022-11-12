@@ -5,7 +5,7 @@
 <form action="">
   <div class="form-control mt-32 mx-32">
     <div class="flex">
-      <a class="btn btn-primary px-20">Tambah Lowongan</a>
+      <a href="<?= base_url(); ?>/Rekruter/tambahLowongan/<?= $daftar_lowongan[0]['id_rekruter']; ?>" class="btn btn-primary px-20">Tambah Lowongan</a>
       <div class="input-group justify-end">
         <input type="text" placeholder="Cari Jenis Lowongan/Posisi..." class="input input-bordered w-1/2" name="keyword" value="<?= (old('keyword')) ? old('keyword') : '' ?>" />
         <button class="btn btn-square bg-slate-900" type="submit" name="submit">
@@ -40,8 +40,8 @@
           <td><?= $no++; ?></td>
           <th><?= $dl['tipe']; ?></th>
           <td><?= $dl['posisi']; ?></td>
-          <td><?= $dl['updated_at']; ?></td>
-          <td><?= $dl['deadline']; ?></td>
+          <td><?= date('d-m-Y', strtotime($dl['updated_at'])); ?></td>
+          <td><?= date('d-m-Y', strtotime($dl['deadline'])); ?></td>
           <td><a href="<?= base_url(); ?>/<?= $dl['tipe']; ?>/detailDaftarLowongan/<?= $dl['id']; ?>" class="btn btn-active btn-primary">Detail</a></td>
         </tr>
       </tbody>
