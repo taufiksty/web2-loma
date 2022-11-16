@@ -2,12 +2,12 @@
 
 <?= $this->section('content'); ?>
 
-<form action="/Rekruter/simpanLowongan/" method="POST" enctype="multipart/form-data">
+<form action="/Rekruter/simpanLowongan/<?= $rekruter['id']; ?>" method="POST" enctype="multipart/form-data">
   <?= csrf_field(); ?>
 
-  <div class="h-fit card place-items-center mt-28 px-72 w-full pb-5 overflow-y-auto" style="border: 1px solid red;">
+  <div class="h-fit card place-items-center mt-28 px-72 w-full pb-5 overflow-y-auto">
 
-    <p class="mb-10 font-bold text-2xl">Form Tambah</p>
+    <p class="mb-10 font-bold text-2xl">Form Tambah Lowongan</p>
 
     <label class="input-group input-group-vertical">
       <span>Jenis Lowongan</span>
@@ -26,7 +26,7 @@
       <span>Lama Kegiatan</span>
       <label class="input-group rounded-none w-full">
         <div class="w-full">
-          <input type="number" placeholder="cth. 3" class="input input-bordered w-full" />
+          <input type="number" placeholder="cth. 3" class="input input-bordered w-full" name="lama_kegiatan" id="lamaKegiatan" />
         </div>
         <span class="px-16 rounded-none">Bulan</span>
       </label>
@@ -35,6 +35,14 @@
     <label class="input-group input-group-vertical mt-5">
       <span>Posisi</span>
       <input type="text" class="input input-bordered input-display" id="posisi" name="posisi" value="" placeholder="cth. Web Designer" />
+    </label>
+    <label class="label w-full invalid:block">
+      <span class="label-text-alt text-red-500"></span>
+    </label>
+
+    <label class="input-group input-group-vertical mt-5">
+      <span>Wilayah Penempatan</span>
+      <input type="text" class="input input-bordered input-display" id="wilayahPenempatan" name="wilayah_penempatan" value="" placeholder="cth. Jakarta Selatan" />
     </label>
     <label class="label w-full invalid:block">
       <span class="label-text-alt text-red-500"></span>
@@ -53,39 +61,39 @@
       <input type="text" class="input input-bordered input-display" id="kualifikasi1" name="kualifikasi" value="" placeholder="Masukkan kualifikasi" />
       <input type="text" class="input input-bordered input-display" id="kualifikasi2" name="kualifikasi" value="" placeholder="Masukkan kualifikasi" />
     </label>
+    <label class="label w-full invalid:block">
+      <span class="label-text-alt text-red-500"></span>
+    </label>
     <div class="flex justify-center mt-3 w-full gap-10">
       <button type="button" class="btn btn-outline btn-info basis-5/12" id="tambahKualifikasi">+ Tambah</button>
       <button type="button" class="btn btn-outline btn-error basis-5/12" id="hapusKualifikasi">- Hapus</button>
     </div>
-    <label class="label w-full invalid:block">
-      <span class="label-text-alt text-red-500"></span>
-    </label>
 
     <label id="inputDeskripsi" class="input-group input-group-vertical mt-14">
       <span>Deskripsi Pekerjaan</span>
       <input type="text" class="input input-bordered input-display" id="deskripsiPekerjaan1" name="deskripsi_pekerjaan" value="" placeholder="Masukkan deskripsi pekerjaan" />
       <input type="text" class="input input-bordered input-display" id="deskripsiPekerjaan2" name="deskripsi_pekerjaan" value="" placeholder="Masukkan deskripsi pekerjaan" />
     </label>
+    <label class="label w-full invalid:block">
+      <span class="label-text-alt text-red-500"></span>
+    </label>
     <div class="flex justify-center mt-3 w-full gap-10">
       <button type="button" class="btn btn-outline btn-info basis-5/12" id="tambahDeskripsi">+ Tambah</button>
       <button type="button" class="btn btn-outline btn-error basis-5/12" id="hapusDeskripsi">- Hapus</button>
     </div>
-    <label class="label w-full invalid:block">
-      <span class="label-text-alt text-red-500"></span>
-    </label>
 
     <label id="inputBenefit" class="input-group input-group-vertical mt-14">
       <span>Benefit dll</span>
       <input type="text" class="input input-bordered input-display" id="benefitDll1" name="benefit_dll" value="" placeholder="Masukkan benefit dll" />
       <input type="text" class="input input-bordered input-display" id="benefitDll2" name="benefit_dll" value="" placeholder="Masukkan benefit dll" />
     </label>
+    <label class="label w-full invalid:block">
+      <span class="label-text-alt text-red-500"></span>
+    </label>
     <div class="flex justify-center mt-3 w-full gap-10">
       <button type="button" class="btn btn-outline btn-info basis-5/12" id="tambahBenefit">+ Tambah</button>
       <button type="button" class="btn btn-outline btn-error basis-5/12" id="hapusBenefit">- Hapus</button>
     </div>
-    <label class="label w-full invalid:block">
-      <span class="label-text-alt text-red-500"></span>
-    </label>
 
     <button type="submit" class="btn btn-accent my-12 px-12">Simpan</button>
   </div>

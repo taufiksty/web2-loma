@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In Page</title>
+  <title>Login Page</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -43,7 +43,7 @@
         <div class="form-control mt-6">
           <button class="btn btn-primary">Masuk</button>
         </div>
-        <a href="signup_page.html" class="link link-hover text-2xs text-center">Belum memiliki akun?</a>
+        <a href="<?= base_url(); ?>/Auth/register" class="link link-hover text-2xs text-center mt-3">Belum memiliki akun?</a>
       </div>
     </div>
   </div>

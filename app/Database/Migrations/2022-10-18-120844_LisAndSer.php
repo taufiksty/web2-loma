@@ -29,6 +29,10 @@ class LisAndSer extends Migration
         'constraint' => '100',
         'null' => false,
       ],
+      'created_at' => [
+        'type' => 'DATETIME',
+        'null' => false,
+      ],
       'updated_at' => [
         'type' => 'DATETIME',
         'null' => false,

@@ -8,7 +8,12 @@ class LowonganModel extends Model
 {
   protected $table = 'lowongan';
   protected $useTimestamps = true;
-  protected $allowedFields = ['id_rekruter', 'tipe', 'posisi', 'wilayah_penempatan', 'lama_kegiatan', 'deadline'];
+  protected $allowedFields = ['id' ,'id_rekruter', 'tipe', 'posisi', 'wilayah_penempatan', 'lama_kegiatan', 'deadline'];
+
+  public function getLowonganId()
+  {
+    return $this->select('lowongan.id')->orderBy('lowongan.id', 'DESC')->limit(1)->find();
+  }
 
   public function getLowongan(string $tipe, int $paginate)
   {

@@ -8,6 +8,7 @@
   <title><?= $title; ?></title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <style>
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -28,20 +29,20 @@
           </svg>
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="#" class="opt active">Dashboard</a></li>
-          <li><a href="/Magang/index" class="opt">Magang</a></li>
-          <li><a class="opt">Part-Time</a></li>
-          <li><a class="opt">Volunteer</a></li>
+          <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt active">Dashboard</a></li>
+          <li><a href="<?= base_url(); ?>/Magang/index" class="opt">Magang</a></li>
+          <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
+          <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
         </ul>
       </div>
       <a href="/LandingPage" class="btn btn-ghost normal-case text-2xl md:ml-5">Loma.</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li><a href="#" class="opt active">Dashboard</a></li>
-        <li><a href="/Magang/index" class="opt">Magang</a></li>
-        <li><a class="opt">Part-Time</a></li>
-        <li><a class="opt">Volunteer</a></li>
+        <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt active">Dashboard</a></li>
+        <li><a href="<?= base_url(); ?>/Magang/index" class="opt">Magang</a></li>
+        <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
+        <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
       </ul>
     </div>
     <div class="navbar-end mr-5 px-2">
@@ -56,12 +57,12 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="https://placeimg.com/80/80/people" />
+            <img src="<?= base_url(); ?>/img/pelamar/<?= $pelamar['foto_profil']; ?>" />
           </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
           <li>
-            <a class="justify-between">
+            <a href="<?= base_url(); ?>/Pelamar/index/<?= $pelamar['id']; ?>" class="justify-between">
               Profile
               <span class="badge hidden">New</span>
             </a>
@@ -107,6 +108,28 @@
         imgPreview.src = e.target.result;
       }
     }
+
+    $(document).ready(function() {
+      $('#tambahLisAndSer').click(function() {
+        const inputLisAndSer = document.querySelectorAll('#inputLisAndSer .input-ls');
+        if (inputLisAndSer.length >= 5) {
+          document.getElementById('alertLisAndSer').classList.remove('hidden');
+        } else {
+          $('#inputLisAndSer').append('<input type="text" class="hidden input-id" name="id[]" value="0">');
+          $('#inputLisAndSer').append('<input type="text" class="rounded-b-lg border-x-2 border-b-2 p-3 input-ls" id="ls" name="ls[]" value="" placeholder="Masukkan Sertifikasi" />');
+          $('#inputLisAndSer').append('<input type="text" class="rounded-b-lg border-x-2 border-b-2 p-3 input-id_kred" id="id_kred" name="id_kred[]" value="" placeholder="Masukkan ID Kredensial" />');
+        }
+      })
+      $('#hapusLisAndSer').click(function() {
+        const inputId = document.querySelectorAll('#inputLisAndSer .input-id');
+        const inputLisAndSer = document.querySelectorAll('#inputLisAndSer .input-ls');
+        const inputIdKred = document.querySelectorAll('#inputLisAndSer .input-id_kred');
+        let n = inputLisAndSer.length - 1;
+        inputId[n].remove();
+        inputLisAndSer[n].remove();
+        inputIdKred[n].remove();
+      })
+    })
   </script>
 
 </body>

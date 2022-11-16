@@ -15,6 +15,7 @@ class LisAndSerSeeder extends Seeder
         'id_pelamar' => 19211101,
         'ls' => 'Machine Learning Dasar - Dicoding',
         'id_kred' => 'MLD-3298782',
+        'created_at' => Time::now(),
         'updated_at' => Time::now()
       ],
       [
@@ -22,6 +23,7 @@ class LisAndSerSeeder extends Seeder
         'id_pelamar' => 19211101,
         'ls' => 'Backend Developer - Meta',
         'id_kred' => 'META-123101',
+        'created_at' => Time::now(),
         'updated_at' => Time::now()
       ]
     ];
