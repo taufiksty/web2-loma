@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\PelamarModel;
 use App\Models\LisAndSerModel;
+use CodeIgniter\I18n\Time;
 
 class Pelamar extends BaseController
 {
@@ -61,6 +62,18 @@ class Pelamar extends BaseController
           'required' => 'Nomor Telepon harus diisi!'
         ]
       ],
+      'univ' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Universitas harus diisi!'
+        ]
+      ],
+      'prodi' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Program Studi harus diisi!'
+        ]
+      ],
     ])) {
       return redirect()->to('/Pelamar/editProfil/'.$id)->withInput();
     }
@@ -86,10 +99,33 @@ class Pelamar extends BaseController
       'gender' => $this->request->getVar('gender'),
       'univ' => $this->request->getVar('univ'),
       'prodi' => $this->request->getVar('prodi'),
-      'foto_profil' => $nameFile
+      'foto_profil' => $nameFile,
     ]);
 
-    session()->setFlashdata('message', 'Profil Berhasil Diubah.');
+    $id_ls = $this->request->getVar('id');
+    $ls = $this->request->getVar('ls');
+    $id_kred = $this->request->getVar('id_kred');
+    
+    for ($i = 0; $i < count($id_ls); $i++) {
+
+      if ($this->LisAndSerModel->getLisAndSerId($id_ls[$i]) == null) {
+        $this->LisAndSerModel->save([
+          'id_pelamar' => $id,
+          'ls' => $ls[$i],
+          'id_kred' => $id_kred[$i]
+        ]);
+      } else {
+        $this->LisAndSerModel->save([
+          'id' => $id_ls[$i],
+          'id_pelamar' => $id,
+          'ls' => $ls[$i],
+          'id_kred' => $id_kred[$i]
+        ]);
+      }
+
+    }
+
+    session()->setFlashdata('success', 'Profil Berhasil Diubah.');
 
     return redirect()->to('/Pelamar/index/'.$id);
   }

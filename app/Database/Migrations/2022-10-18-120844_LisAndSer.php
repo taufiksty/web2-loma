@@ -11,9 +11,13 @@ class LisAndSer extends Migration
     $this->forge->addField([
       'id' => [
         'type'           => 'INT',
-        'constraint'     => 8,
         'unsigned'       => true,
         'auto_increment' => false,
+      ],
+      'id_pelamar' => [
+        'type' => 'INT',
+        'constraint' => 8,
+        'null' => false
       ],
       'ls' => [
         'type'       => 'VARCHAR',
@@ -25,12 +29,16 @@ class LisAndSer extends Migration
         'constraint' => '100',
         'null' => false,
       ],
+      'created_at' => [
+        'type' => 'DATETIME',
+        'null' => false,
+      ],
       'updated_at' => [
         'type' => 'DATETIME',
         'null' => false,
       ],
     ]);
-    // $this->forge->addKey('id', true);
+    $this->forge->addKey('id', true);
     $this->forge->createTable('lis_and_ser');
   }
 

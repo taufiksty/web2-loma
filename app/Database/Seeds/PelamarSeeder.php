@@ -27,7 +27,11 @@ class PelamarSeeder extends Seeder
         'email' => $faker->email,
         'no_telp' => $faker->phoneNumber,
         'alamat' => $faker->address,
-        'foto_profil' => 'Jisoo.jpg',
+        'tl' => $faker->date('Y-m-d'),
+        'gender' => $faker->randomElement(['Laki-laki', 'Perempuan']),
+        'univ' => $faker->randomElement(['Universitas Bina Sarana Informatika', 'Universitas Gunadarma', 'Universitas Telkom', 'Universitas Bina Nusantara', 'Universitas Bina Sarana Informatika']),
+        'prodi' => $faker->randomElement(['Teknik Informatika', 'Sistem Informasi', 'Ilmu Komunikasi', 'Sastra Inggris', 'Manajemen']),
+        'foto_profil' => 'default-profile.jpg',
         'created_at' => Time::createFromTimestamp($faker->unixTime()),
         'updated_at' => Time::now()
       ];

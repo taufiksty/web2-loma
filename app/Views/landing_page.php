@@ -30,8 +30,8 @@
             </a>
             <ul class="p-2 bg-base-100">
               <li><a href="<?= base_url(); ?>/magang">Magang</a></li>
-              <li><a>Part-Time</a></li>
-              <li><a>Volunteer</a></li>
+              <li><a href="<?= base_url(); ?>/Parttime/index">Part-Time</a></li>
+              <li><a href="<?= base_url(); ?>/Volunteer/index">Volunteer</a></li>
             </ul>
           </li>
           <li><a href="#kontak-kami">Kontak Kami</a></li>
@@ -51,16 +51,16 @@
           </a>
           <ul class="p-2 px-5 bg-base-100">
             <li><a href="<?= base_url(); ?>/magang">Magang</a></li>
-            <li><a>Part-Time</a></li>
-            <li><a>Volunteer</a></li>
+            <li><a href="<?= base_url(); ?>/Parttime/index">Part-Time</a></li>
+            <li><a href="<?= base_url(); ?>/Volunteer/index">Volunteer</a></li>
           </ul>
         </li>
         <li><a href="#kontak-kami">Kontak Kami</a></li>
       </ul>
     </div>
     <div class="navbar-end">
-      <a href="<?= base_url(); ?>/Sign/SignOut" class="btn btn-ghost">Daftar</a>
-      <a href="<?= base_url(); ?>/Sign/signIn" class="btn btn-primary mx-5 hover:bg-primary-focus">Masuk</a>
+      <a href="<?= base_url(); ?>/Auth/register" class="btn btn-ghost">Daftar</a>
+      <a href="<?= base_url(); ?>/Auth/login" class="btn btn-primary mx-5 hover:bg-primary-focus">Masuk</a>
     </div>
   </div>
 
@@ -69,7 +69,7 @@
       <div class="max-w-4xl">
         <h1 class="text-5xl font-bold leading-normal">Jadilah Mahasiswa Berpengalaman<br>Temukan Aksi & Petualanganmu<br>Di Sini</h1>
         <p class="py-6">Kejar Impianmu Dengan Bangun Karier<br>Sejak Bangku Kuliah</p>
-        <a href="/Sign/signIn" class="btn btn-primary px-10">Mulai</a>
+        <a href="<?= base_url(); ?>/Auth/login" class="btn btn-primary px-10">Mulai</a>
       </div>
     </div>
   </div>
