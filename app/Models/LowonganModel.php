@@ -27,7 +27,7 @@ class LowonganModel extends Model
 
   public function getDetailLowongan(string $tipe, int $id) 
   {
-    $where_array = ['tipe' => $tipe, 'lowongan.id' => $id];
+    $where_array = ['lowongan.tipe' => $tipe, 'lowongan.id' => $id];
 
     return $this->select('lowongan.id, lowongan.id_rekruter, lowongan.tipe, lowongan.posisi, lowongan.wilayah_penempatan, lowongan.lama_kegiatan, lowongan.deadline, lowongan.updated_at, rekruter.nama_perusahaan, rekruter.foto_logo, rekruter.tentang')->join('rekruter', 'rekruter.id=lowongan.id_rekruter')->where($where_array)->find();
   } 
