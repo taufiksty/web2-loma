@@ -12,98 +12,109 @@
 
 <body class="overflow-x-hidden h-80">
   <div class="navbar bg-base-100 mx-3 py-3">
-    <a href="landing_page.html" class="btn btn-ghost normal-case text-xl">Loma.</a>
+    <a href="<?= base_url(); ?>" class="btn btn-ghost normal-case text-xl">Loma.</a>
   </div>
 
   <div class="flex justify-center align-center mb-10 main-form">
 
-    <div class="card w-full max-w-sm shadow-2xl bg-base-100 mb-4">
+    <div class="card w-full max-w-md shadow-2xl bg-base-100 mb-4">
       <div class="card-body">
         <div class="text-center">
           <h1 class="text-4xl font-bold mb-6">Daftar</h1>
         </div>
-        <div class="form-control w-full max-w-xs">
+
+        <?= view('Myth\Auth\Views\_message_block') ?>
+
+        <div class="form-control w-full max-w-sm">
           <label class="label">
             <span class="label-text">Sebagai?</span>
           </label>
-          <select class="select select-bordered" id="select-user" onchange="signup()">
+          <select class="select select-bordered" name="pilihRole" id="select-user" onchange="signup()">
             <option disabled selected>Pilih salah satu</option>
-            <option value="pelamar">Pelamar</option>
-            <option value="rekruter">Rekruter</option>
+            <option value="pelamar" <?php if (old('pilihRole') === 'pelamar') : ?> selected <?php endif ?>>Pelamar</option>
+            <option value="rekruter" <?php if (old('pilihRole') === 'rekruter') : ?> selected <?php endif ?>>Rekruter</option>
           </select>
         </div>
 
+
         <div id="pelamar" class="hidden">
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Email</span>
-            </label>
-            <input type="email" placeholder="email" class="input input-bordered" />
-          </div>
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Username</span>
-            </label>
-            <input type="text" placeholder="username" class="input input-bordered" />
-          </div>
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Buat Password</span>
-            </label>
-            <input type="password" placeholder="buat password" class="input input-bordered" />
-          </div>
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Konfirmasi Password</span>
-            </label>
-            <input type="password" placeholder="konfirmasi password" class="input input-bordered" />
-          </div>
-          <div class="form-control mt-5">
-            <label class="label cursor-pointer">
-              <span class="label-text">Menyetujui <a href="" class="link link-primary">Syarat</a> dan <a href="" class="link link-primary">Ketentuan</a></span>
-              <input type="checkbox" class="checkbox" />
-            </label>
-          </div>
-          <div class="form-control mt-6">
-            <button class="btn btn-primary">Daftar</button>
-          </div>
+          <form action="<?= url_to('register') ?>" method="POST" id="formPelamar" name="formPelamar" class="user">
+            <?= csrf_field() ?>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Email</span>
+              </label>
+              <input type="email" name="email" placeholder="email" value="<?= old('email') ?>" class="input input-bordered <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" aria-describedby="emailHelp" />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Username</span>
+              </label>
+              <input type="text" class="input input-bordered <?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" name="username" placeholder="username" value="<?= old('username') ?>">
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Buat Password</span>
+              </label>
+              <input type="password" name="password" class="input input-bordered <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="buat password" autocomplete="off">
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Konfirmasi Password</span>
+              </label>
+              <input type="password" name="pass_confirm" class="input input-bordered <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="konfirmasi password" autocomplete="off">
+            </div>
+            <div class="form-control mt-5">
+              <label class="label cursor-pointer">
+                <span class="label-text">Menyetujui <a href="" class="link link-primary">Syarat</a> dan <a href="" class="link link-primary">Ketentuan</a></span>
+                <input type="checkbox" class="checkbox" required />
+              </label>
+            </div>
+            <div class="form-control mt-6">
+              <button type="button" onclick="submitPelamar()" class="btn btn-outline btn-primary">Daftar</button>
+            </div>
+          </form>
         </div>
 
         <div id="rekruter" class="hidden">
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Email Perusahaan</span>
-            </label>
-            <input type="email" placeholder="email" class="input input-bordered" />
-          </div>
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Username</span>
-            </label>
-            <input type="text" placeholder="username" class="input input-bordered" />
-          </div>
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Buat Password</span>
-            </label>
-            <input type="password" placeholder="buat password" class="input input-bordered" />
-          </div>
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Konfirmasi Password</span>
-            </label>
-            <input type="password" placeholder="konfirmasi password" class="input input-bordered" />
-          </div>
-          <div class="form-control mt-5">
-            <label class="label cursor-pointer">
-              <span class="label-text">Menyetujui <a href="" class="link link-primary">Syarat</a> dan <a href="" class="link link-primary">Ketentuan</a></span>
-              <input type="checkbox" class="checkbox" />
-            </label>
-          </div>
-          <div class="form-control mt-6">
-            <button class="btn btn-primary">Daftar</button>
-          </div>
+          <form action="<?= url_to('register') ?>" method="POST" id="formRekruter" name="formRekruter" class="user">
+            <?= csrf_field() ?>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Email Perusahaan</span>
+              </label>
+              <input type="email" name="email" placeholder="email perusahaan" value="<?= old('email') ?>" class="input input-bordered <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" aria-describedby="emailHelp" />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Username</span>
+              </label>
+              <input type="text" class="input input-bordered <?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" name="username" placeholder="username" value="<?= old('username') ?>">
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Buat Password</span>
+              </label>
+              <input type="password" name="password" class="input input-bordered <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="buat password" autocomplete="off">
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Konfirmasi Password</span>
+              </label>
+              <input type="password" name="pass_confirm" class="input input-bordered <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="konfirmasi password" autocomplete="off">
+            </div>
+            <div class="form-control mt-5">
+              <label class="label cursor-pointer">
+                <span class="label-text">Menyetujui <a href="" class="link link-primary">Syarat</a> dan <a href="" class="link link-primary">Ketentuan</a></span>
+                <input type="checkbox" class="checkbox" required />
+              </label>
+            </div>
+            <div class="form-control mt-6">
+              <button type="button" onclick="submitRekruter()" class="btn btn-outline btn-primary">Daftar</button>
+            </div>
+          </form>
         </div>
+
 
       </div>
     </div>
@@ -151,7 +162,16 @@
       }
 
       footer.className = footer.className.replace('fixed', '');
+    }
 
+    function submitPelamar() {
+      const formPelamar = document.getElementById('formPelamar');
+      formPelamar.submit();
+    }
+
+    function submitRekruter() {
+      const formRekruter = document.getElementById('formRekruter');
+      formRekruter.submit();
     }
   </script>
 

@@ -8,47 +8,82 @@
   <title>Login Page</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
-<body class="overflow-hidden">
+<body class="overflow-x-hidden">
   <div class="navbar bg-base-100 mx-3 py-3">
     <a href="/LandingPage" class="btn btn-ghost normal-case text-xl">Loma.</a>
   </div>
 
   <div class="flex justify-center align-center">
-    <div class="card w-full max-w-sm shadow-2xl bg-base-100">
+    <div class="card w-full max-w-md shadow-2xl bg-base-100">
       <div class="card-body">
         <div class="text-center">
           <h1 class="text-4xl font-bold mb-6">Masuk</h1>
         </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Email</span>
-          </label>
-          <input type="email" placeholder="email" class="input input-bordered" />
-        </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Password</span>
-          </label>
-          <input type="password" placeholder="password" class="input input-bordered" />
-        </div>
-        <a class="link link-hover text-2xs">Lupa password?</a>
-        <div class="form-control">
-          <label class="label cursor-pointer">
-            <span class="label-text">Ingat saya</span>
-            <input type="checkbox" checked="checked" class="checkbox" />
-          </label>
-        </div>
-        <div class="form-control mt-6">
-          <button class="btn btn-primary">Masuk</button>
-        </div>
-        <a href="<?= base_url(); ?>/Auth/register" class="link link-hover text-2xs text-center mt-3">Belum memiliki akun?</a>
+
+        <?= view('Myth\Auth\Views\_message_block') ?>
+
+        <form action="<?= url_to('login') ?>" method="post" class="user">
+          <?= csrf_field() ?>
+
+          <?php if ($config->validFields === ['email']) : ?>
+            <div class="form-control mt-3">
+              <label class="label" for="login">
+                <span class="label-text">Email atau Username</span>
+              </label>
+              <input type="email" placeholder="email atau username" name="login" class="input input-bordered <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" />
+              <div class="invalid-feedback text-sm text-red-500">
+                <?= session('errors.login') ?>
+              </div>
+            </div>
+          <?php else : ?>
+            <div class="form-control mt-3">
+              <label class="label" for="login">
+                <span class="label-text">Email atau Username</span>
+              </label>
+              <input type="text" placeholder="email atau username" name="login" class="input input-bordered <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" />
+              <div class="invalid-feedback text-sm text-red-500">
+                <?= session('errors.login') ?>
+              </div>
+            </div>
+          <?php endif; ?>
+
+          <div class="form-control mt-3">
+            <label class="label">
+              <span class="label-text">Password</span>
+            </label>
+            <input type="password" name="password" placeholder="password" class="input input-bordered <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" />
+            <div class="invalid-feedback text-sm text-red-500">
+              <?= session('errors.password') ?>
+            </div>
+          </div>
+
+          <a href="<?= base_url(); ?>/forgot" class="link link-hover text-2xs mt-5">Lupa password?</a>
+
+          <?php if ($config->allowRemembering) : ?>
+            <div class="form-control mt-5">
+              <label class="label cursor-pointer">
+                <span class="label-text">Ingat saya</span>
+                <input type="checkbox" name="remember" class="checkbox" <?php if (old('remember')) : ?> checked <?php endif ?> />
+              </label>
+            </div>
+          <?php endif; ?>
+
+          <div class="form-control mt-6">
+            <button type="submit" id="masuk" class="btn btn-outline btn-primary">Masuk</button>
+          </div>
+
+          <div class="w-full flex justify-center">
+            <a href="<?= base_url(); ?>/register" class="link link-hover text-2xs mt-3">Belum memiliki akun?</a>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 
-  <footer class="footer items-center p-4 bg-neutral text-neutral-content absolute bottom-0">
+  <footer id="footer" class="footer items-center p-4 bg-neutral text-neutral-content mt-20">
     <div class="items-center grid-flow-col">
       <a href="#">
         <h1 class="text-xl font-bold">Loma.</h1>
@@ -68,7 +103,6 @@
         </svg></a>
     </div>
   </footer>
-
 
 </body>
 

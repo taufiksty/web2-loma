@@ -41,7 +41,8 @@ $routes->get('/register', 'Auth::register');
 $routes->get('/pelamar/(:num)', 'Pelamar::index/$1');
 $routes->get('/rekruter/(:num)', 'Rekruter::index/$1');
 $routes->get('/magang', 'Magang::index');
-$routes->get('/magang/(:num)', 'Magang::detailLowongan/$1');  
+$routes->get('/magang/(:num)', 'Magang::detailLowongan/$1');
+$routes->get('/lamar/(:any)/(:num)', 'Pelamar::lamar/$1/$2');  
 
 /*
  * --------------------------------------------------------------------

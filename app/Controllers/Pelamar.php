@@ -4,7 +4,10 @@ namespace App\Controllers;
 
 use App\Models\PelamarModel;
 use App\Models\LisAndSerModel;
+use App\Models\LowonganModel;
+
 use CodeIgniter\I18n\Time;
+use DateTime;
 
 class Pelamar extends BaseController
 {
@@ -14,6 +17,7 @@ class Pelamar extends BaseController
   {
     $this->PelamarModel = new PelamarModel();
     $this->LisAndSerModel = new LisAndSerModel();
+    $this->LowonganModel = new LowonganModel();
   }
 
   public function index($id)
@@ -137,5 +141,23 @@ class Pelamar extends BaseController
     ];
 
     return view('pelamar/histori_lamaran', $data);
+  }
+
+  public function lamar($tipe, $id)
+  {
+    $detail_lowongan = $this->LowonganModel->getDetailLowongan($tipe, $id);
+
+    $tgl_update = new DateTime($detail_lowongan[0]['updated_at']);
+    $tgl_now = Time::now();
+    $interval = $tgl_now->diff($tgl_update);
+
+    $data = [
+      'title' => 'Loma | Lamar Lowongan',
+      'detail_lowongan' => $detail_lowongan,
+      'interval' => $interval->format('%D'),
+      'validation' => \Config\Services::validation()
+    ];
+
+    return view('pelamar/lamar', $data);
   }
 }

@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="flex flex-col w-full lg:flex-row my-24">
-  <div class="sticky top-20 px-14 h-full card rounded-box place-items-center" >
+  <div class="sticky top-20 px-14 h-full card rounded-box place-items-center">
     <div class="avatar">
       <div class="w-28 rounded">
         <img src="<?= base_url(); ?>/img/rekruter/<?= $detail_magang[0]['foto_logo']; ?>" />
@@ -52,7 +52,7 @@
     </div>
     <div class="flex justify-end w-full mt-24">
       <p class="text-base font-normal mr-20 flex items-center">Merasa janggal dengan lowongan di atas? Laporkan <a href="" class="underline text-blue-500">di sini</a></p>
-      <a class="btn btn-primary px-20 font-bold text-lg">Lamar</a>
+      <a href="<?= base_url(); ?>/lamar/<?= $detail_magang[0]['tipe'] ?>/<?= $detail_magang[0]['id']; ?>" class="btn btn-primary px-20 font-bold text-lg">Lamar</a>
     </div>
   </div>
 </div>
