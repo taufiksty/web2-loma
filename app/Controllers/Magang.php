@@ -93,4 +93,13 @@ class Magang extends BaseController
     // dd($data['detail_magang']);
     return view('magang/detail_daftar_lowongan', $data);
   }
+
+  public function hapusLowongan($id, $id_rekruter)
+  {
+    $this->LowonganModel->delete($id);
+
+    session()->setFlashdata('success', 'Lowongan berhasil dihapus.');
+
+    return redirect()->to('/Rekruter/daftarLowongan/' . $id_rekruter);
+  }
 }

@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  </script>
   <style>
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -30,16 +29,20 @@
           </svg>
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="<?= base_url(); ?>/Rekruter/index" class="opt active">Profil</a></li>
-          <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt">Daftar Lowongan</a></li>
+          <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt active">Dashboard</a></li>
+          <li><a href="<?= base_url(); ?>/Magang/index" class="opt">Magang</a></li>
+          <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
+          <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
         </ul>
       </div>
       <a href="/LandingPage" class="btn btn-ghost normal-case text-2xl md:ml-5">Loma.</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li class="mr-4"><a href="<?= base_url(); ?>/Rekruter/index" class="opt">Profil</a></li>
-        <li><a href="<?= base_url(); ?>/Rekruter/daftarLowongan" class="opt active">Daftar Lowongan</a></li>
+        <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt active">Dashboard</a></li>
+        <li><a href="<?= base_url(); ?>/Magang/index" class="opt">Magang</a></li>
+        <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
+        <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
       </ul>
     </div>
     <div class="navbar-end mr-5 px-2">
@@ -54,12 +57,12 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="<?= base_url(); ?>/img/rekruter/" />
+            <img src="<?= base_url(); ?>/img/pelamar/<?= $lamaran[0]['foto_profil']; ?>" />
           </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
           <li>
-            <a class="justify-between">
+            <a href="<?= base_url(); ?>/Pelamar/index/<?= $lamaran[0]['id_pelamar']; ?>" class="justify-between">
               Profile
               <span class="badge hidden">New</span>
             </a>
@@ -72,7 +75,7 @@
 
   <?= $this->renderSection('content'); ?>
 
-  <footer class="absolute b-0 footer items-center p-4 bg-neutral text-neutral-content">
+  <footer class="footer items-center p-4 bg-neutral text-neutral-content">
     <div class="items-center grid-flow-col">
       <a href="#">
         <h1 class="text-xl font-bold">Loma.</h1>
@@ -94,39 +97,37 @@
   </footer>
 
   <script>
+    function previewImg() {
+      const fotoProfil = document.querySelector('#fotoProfil');
+      const imgPreview = document.querySelector('.img-preview');
+
+      const fotoProfilFile = new FileReader();
+      fotoProfilFile.readAsDataURL(fotoProfil.files[0]);
+
+      fotoProfilFile.onload = function(e) {
+        imgPreview.src = e.target.result;
+      }
+    }
 
     $(document).ready(function() {
-      $('#tambahKualifikasi').click(function() {
-        const inputKualifikasi = document.querySelectorAll('#inputKualifikasi input');
-        let n = inputKualifikasi.length + 1;
-        $('#inputKualifikasi').append(`<input type="text" class="input input-bordered input-display" id="kualifikasi${n}" name="kualifikasi[]" value="" placeholder="Masukkan kualifikasi" />`);
+      $('#tambahLisAndSer').click(function() {
+        const inputLisAndSer = document.querySelectorAll('#inputLisAndSer .input-ls');
+        if (inputLisAndSer.length >= 5) {
+          document.getElementById('alertLisAndSer').classList.remove('hidden');
+        } else {
+          $('#inputLisAndSer').append('<input type="text" class="hidden input-id" name="id[]" value="0">');
+          $('#inputLisAndSer').append('<input type="text" class="rounded-b-lg border-x-2 border-b-2 p-3 input-ls" id="ls" name="ls[]" value="" placeholder="Masukkan Sertifikasi" />');
+          $('#inputLisAndSer').append('<input type="text" class="rounded-b-lg border-x-2 border-b-2 p-3 input-id_kred" id="id_kred" name="id_kred[]" value="" placeholder="Masukkan ID Kredensial" />');
+        }
       })
-      $('#hapusKualifikasi').click(function() {
-        const inputKualifikasi = document.querySelectorAll('#inputKualifikasi input');
-        let n = inputKualifikasi.length;
-        $(`#kualifikasi${n}`).remove();
-      })
-
-      $('#tambahDeskripsi').click(function() {
-        const inputDeskripsi = document.querySelectorAll('#inputDeskripsi input');
-        let n = inputDeskripsi.length + 1;
-        $('#inputDeskripsi').append(`<input type="text" class="input input-bordered input-display" id="deskripsiPekerjaan${n}" name="deskripsi_pekerjaan[]" value="" placeholder="Masukkan deskripsi" />`);
-      })
-      $('#hapusDeskripsi').click(function() {
-        const inputDeskripsi = document.querySelectorAll('#inputDeskripsi input');
-        let n = inputDeskripsi.length;
-        $(`#deskripsiPekerjaan${n}`).remove();
-      })
-
-      $('#tambahBenefit').click(function() {
-        const inputBenefit = document.querySelectorAll('#inputBenefit input');
-        let n = inputBenefit.length + 1;
-        $('#inputBenefit').append(`<input type="text" class="input input-bordered input-display" id="benefitDll${n}" name="benefit_dll[]" value="" placeholder="Masukkan benefit dll" />`);
-      })
-      $('#hapusBenefit').click(function() {
-        const inputBenefit = document.querySelectorAll('#inputBenefit input');
-        let n = inputBenefit.length;
-        $(`#benefitDll${n}`).remove();
+      $('#hapusLisAndSer').click(function() {
+        const inputId = document.querySelectorAll('#inputLisAndSer .input-id');
+        const inputLisAndSer = document.querySelectorAll('#inputLisAndSer .input-ls');
+        const inputIdKred = document.querySelectorAll('#inputLisAndSer .input-id_kred');
+        let n = inputLisAndSer.length - 1;
+        inputId[n].remove();
+        inputLisAndSer[n].remove();
+        inputIdKred[n].remove();
       })
     })
   </script>

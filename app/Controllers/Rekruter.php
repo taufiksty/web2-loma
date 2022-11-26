@@ -7,6 +7,7 @@ use App\Models\LowonganModel;
 use App\Models\DLKualifikasiModel;
 use App\Models\DLDeskripsiModel;
 use App\Models\DLBenefitdllModel;
+use CodeIgniter\I18n\Time;
 
 class Rekruter extends BaseController
 {
@@ -130,7 +131,7 @@ class Rekruter extends BaseController
 
     $data = [
       'title' => 'Loma | Daftar Lowongan',
-      'daftar_lowongan' => $daftar_lowongan->getDaftarLowongan($id, 10),
+      'daftar_lowongan' => $daftar_lowongan->getDaftarLowongan($id, 5),
       'pager' => $daftar_lowongan->pager,
       'current_page' => $currentPage
     ];
@@ -154,25 +155,29 @@ class Rekruter extends BaseController
     if (!$this->validate([
       'jenis_lowongan' => [
         'rules' => 'required',
-        'error' => [
+        'errors' => [
           'required' => 'Jenis lowongan harus dipilih.'
         ]
       ],
       'lama_kegiatan' => [
         'rules' => 'required',
-        'error' => [
+        'errors' => [
           'required' => 'Lama kegiatan harus diisi.'
         ]
       ],
       'posisi' => [
         'rules' => 'required',
-        'error' => [
+        'errors' => [
           'required' => 'Posisi harus diisi.'
         ]
       ],
+      'wilayah_penempatan' => [
+        'rules' => 'required',
+        'errors' => 'Wilayah penem[atan harus diisi.'
+      ],
       'deadline' => [
         'rules' => 'required',
-        'error' => [
+        'errors' => [
           'required' => 'Deadline harus diisi.'
         ]
       ],
@@ -182,11 +187,12 @@ class Rekruter extends BaseController
 
     $this->LowonganModel->save([
       'id_rekruter' => $id,
-      'tipe' => $this->request->getVar('tipe'),
+      'tipe' => $this->request->getVar('jenis_lowongan'),
       'posisi' => $this->request->getVar('posisi'),
       'wilayah_penempatan' => $this->request->getVar('wilayah_penempatan'),
       'lama_kegiatan' => $this->request->getVar('lama_kegiatan'),
-      'deadline' => $this->request->getVar('deadline')
+      'deadline' => $this->request->getVar('deadline'),
+      'created_at' => Time::now()
     ]);
     
     $kualifikasi = $this->request->getVar('kualifikasi');
@@ -209,12 +215,15 @@ class Rekruter extends BaseController
     }
 
     for ($i = 0; $i < count($benefit_dll); $i++) {
-      $this->DLBenefitDllModel->save([
+      $this->DLBenefitdllModel->save([
         'id_lowongan' => $id_lowongan[0],
         'benefit' => $benefit_dll[$i]
       ]);
     }
 
+    session()->setFlashdata('success', 'Lowongan berhasil ditambahkan.');
+
+    return redirect()->to('/Rekruter/daftarLowongan/' . $id);
     
   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\LamaranModel;
 use App\Models\PelamarModel;
 use App\Models\LisAndSerModel;
 use App\Models\LowonganModel;
@@ -18,6 +19,7 @@ class Pelamar extends BaseController
     $this->PelamarModel = new PelamarModel();
     $this->LisAndSerModel = new LisAndSerModel();
     $this->LowonganModel = new LowonganModel();
+    $this->LamaranModel = new LamaranModel();
   }
 
   public function index($id)
@@ -79,7 +81,7 @@ class Pelamar extends BaseController
         ]
       ],
     ])) {
-      return redirect()->to('/Pelamar/editProfil/'.$id)->withInput();
+      return redirect()->to('/Pelamar/editProfil/' . $id)->withInput();
     }
 
     // Taking photo profile
@@ -109,7 +111,7 @@ class Pelamar extends BaseController
     $id_ls = $this->request->getVar('id');
     $ls = $this->request->getVar('ls');
     $id_kred = $this->request->getVar('id_kred');
-    
+
     for ($i = 0; $i < count($id_ls); $i++) {
 
       if ($this->LisAndSerModel->getLisAndSerId($id_ls[$i]) == null) {
@@ -126,26 +128,30 @@ class Pelamar extends BaseController
           'id_kred' => $id_kred[$i]
         ]);
       }
-
     }
 
     session()->setFlashdata('success', 'Profil Berhasil Diubah.');
 
-    return redirect()->to('/Pelamar/index/'.$id);
+    return redirect()->to('/Pelamar/index/' . $id);
   }
 
-  public function historiLamaran()
+
+  /**
+   * Controller to histori lamaran of pelamar
+   */
+  public function historiLamaran($id_pelamar)
   {
     $data = [
       'title' => 'Loma | Histori Lamaran',
+      'lamaran' => $this->LamaranModel->getLamaran($id_pelamar)
     ];
 
     return view('pelamar/histori_lamaran', $data);
   }
 
-  public function lamar($tipe, $id)
+  public function lamar($tipe, $id_lowongan)
   {
-    $detail_lowongan = $this->LowonganModel->getDetailLowongan($tipe, $id);
+    $detail_lowongan = $this->LowonganModel->getDetailLowongan($tipe, $id_lowongan);
 
     $tgl_update = new DateTime($detail_lowongan[0]['updated_at']);
     $tgl_now = Time::now();
@@ -155,9 +161,61 @@ class Pelamar extends BaseController
       'title' => 'Loma | Lamar Lowongan',
       'detail_lowongan' => $detail_lowongan,
       'interval' => $interval->format('%D'),
+      'pelamar' => $this->PelamarModel->getPelamar(19211101),
+      'lamaran' => $this->LamaranModel,
       'validation' => \Config\Services::validation()
     ];
 
     return view('pelamar/lamar', $data);
+  }
+
+  public function simpanLamaran()
+  {
+    // // Validation input
+    // if (!$this->validate([
+    //   'sk_mahasiswa_aktif' => [
+    //     'rules' => 'required|max_size[sk_mahasiswa_aktif,2048]',
+    //     'errors' => [
+    //       'required' => "Surat keterangan mahasiswa aktif terbaru harus diisi!",
+    //       'max_size' => "Ukuran maksimal file 2 MB.",
+    //       // 'mime_in' => "File harus dalam format PDF!"
+    //     ]
+    //   ],
+    //   'cv' => [
+    //     'rules' => 'required|max_size[cv,2048]',
+    //     'errors' => [
+    //       'required' => "CV terbaru harus diisi!",
+    //       'max_size' => "Ukuran maksimal file 2 MB.",
+    //       // 'mime_in' => "File harus dalam format PDF!"
+    //     ]
+    //   ],
+    // ])) {
+    //   return redirect()->to('/Pelamar/lamar/'.$this->request->getVar('tipe').'/'.$this->request->getVar('id_lowongan'))->withInput();
+    // }
+
+    // Taking file
+    $skMahasiswaAktif = $this->request->getFile('sk_mahasiswa_aktif');
+    $cv = $this->request->getFile('cv');
+    
+    // Take file name as random
+    $nameSkMahasiswaAktif = $skMahasiswaAktif->getRandomName();
+    $nameCv = $cv->getRandomName();
+
+    // Move file to public/img
+    $skMahasiswaAktif->move('file/sk_mahasiswa_aktif', $nameSkMahasiswaAktif);
+    $cv->move('file/cv', $nameCv);
+
+    // Save to database lamaran's table
+    $this->LamaranModel->save([
+      'id_lowongan' => $this->request->getVar('id_lowongan'),
+      'id_pelamar' => $this->request->getVar('id_pelamar'),
+      'sk_mahasiswa_aktif' => $nameSkMahasiswaAktif,
+      'cv' => $nameCv,
+      'created_at' => Time::now()
+    ]);
+
+    session()->setFlashdata('success', 'Lamaran berhasil dikirim.');
+
+    return redirect()->to('/Pelamar/index/'.$this->request->getVar('id_pelamar'));
   }
 }

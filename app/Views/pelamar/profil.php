@@ -7,7 +7,7 @@
     <div class="h-full place-items-start">
       <ul class="menu card rounded-box bg-base-300 md:w-56 fixed">
         <li><a href="#" class="active">Profil</a></li>
-        <li><a href="<?= base_url(); ?>/Pelamar/historiLamaran">Histori</a></li>
+        <li><a href="<?= base_url(); ?>/Pelamar/historiLamaran/<?= $pelamar['id']; ?>">Histori</a></li>
       </ul>
     </div>
     <div class="divider divider-horizontal"></div>

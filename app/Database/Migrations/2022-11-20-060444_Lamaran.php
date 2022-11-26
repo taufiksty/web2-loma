@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Lowongan extends Migration
+class Lamaran extends Migration
 {
   public function up()
   {
@@ -15,38 +15,29 @@ class Lowongan extends Migration
         'unsigned'       => true,
         'auto_increment' => true,
       ],
-      'id_rekruter' => [
+      'id_lowongan' => [
         'type'       => 'INT',
         'constraint' => 8,
         'null'       => false,
       ],
-      'tipe' => [
-        'type' => 'ENUM',
-        'constraint' => ['Magang', 'Parttime', 'Volunteer'],
-        'null' => false,
-      ],
-      'posisi' => [
-        'type' => 'VARCHAR',
-        'constraint' => '100',
-        'null' => false,
-      ],
-      'wilayah_penempatan' => [
-        'type' => 'VARCHAR',
-        'constraint' => '100',
-        'null' => false
-      ],
-      'lama_kegiatan' => [
+      'id_pelamar' => [
         'type' => 'INT',
-        'constraint' => 5,
+        'constraint' => 8,
         'null' => false,
       ],
-      'deadline' => [
-        'type' => 'DATE',
+      'sk_mahasiswa_aktif' => [
+        'type' => 'VARCHAR',
+        'constraint' => '255',
         'null' => false,
+      ],
+      'cv' => [
+        'type' => 'VARCHAR',
+        'constraint' => '255',
+        'null' => false
       ],
       'created_at' => [
         'type' => 'DATETIME',
-        'null' => false,
+        'null' => false
       ],
       'updated_at' => [
         'type' => 'DATETIME',
@@ -54,11 +45,11 @@ class Lowongan extends Migration
       ],
     ]);
     $this->forge->addKey('id', true);
-    $this->forge->createTable('lowongan');
+    $this->forge->createTable('lamaran');
   }
 
   public function down()
   {
-    $this->forge->dropTable('lowongan');
+    $this->forge->dropTable('lamaran');
   }
 }

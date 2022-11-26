@@ -93,4 +93,13 @@ class Parttime extends BaseController
     // dd($data['detail_parttime']);
     return view('parttime/detail_daftar_lowongan', $data);
   }
+
+  public function hapusLowongan($id, $id_rekruter)
+  {
+    $this->LowonganModel->delete($id);
+
+    session()->setFlashdata('success', 'Lowongan berhasil dihapus.');
+
+    return redirect()->to('/Rekruter/daftarLowongan/' . $id_rekruter);
+  }
 }

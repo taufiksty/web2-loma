@@ -52,11 +52,7 @@
       </div>
     </div>
     <div class="flex justify-end w-full mt-24">
-      <p class="text-base font-normal mr-20 flex items-center">Merasa janggal dengan lowongan di atas? Laporkan <a href="" class="underline text-blue-500">di sini</a></p>
-      <a class="btn btn-primary px-20 font-bold text-lg">Lamar</a>
-    </div>
-    <div class="flex justify-end w-full mt-24">
-      <a class="btn btn-error px-5 mr-5 font-medium text-base">Hapus Lowongan</a>
+      <a href="<?= base_url(); ?>/Parttime/hapusLowongan/<?= $detail_parttime[0]['id']; ?>/<?= $detail_parttime[0]['id_rekruter']; ?>" class="btn btn-error px-5 mr-5 font-medium text-base" onclick="confirm('Apakah anda yakin ingin menghapus lowongan? Pelamar yang telah melamar akan diberitahu secara otomatis.');">Hapus Lowongan</a>
       <a class="btn btn-warning px-16 font-medium text-base">Edit Lowongan</a>
     </div>
   </div>

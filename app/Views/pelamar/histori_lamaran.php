@@ -1,50 +1,63 @@
-<?= $this->extend('layout/pelamar/template_profil'); ?>
+<!-- Call a template -->
+<?= $this->extend('layout/pelamar/template_histori_lamaran'); ?>
 
+<!-- Section of content -->
 <?= $this->section('content'); ?>
 
-<div class="container mt-24 mx-9">
-  <div class="grid w-auto" style="grid-template-columns: 20% 5% 60%;">
+<!-- Container at all or main section -->
+<div class="container mt-24 ml-10">
+
+  <!-- Make a grid layout for splicing view to three side -->
+  <div class="grid w-auto" style="grid-template-columns: 18% 5% 70%;">
+
+    <!-- Left side contains option of profile and application history -->
     <div class="h-full place-items-start">
       <ul class="menu card rounded-box bg-base-300 md:w-56 fixed">
-        <li><a href="/Pelamar/index">Profil</a></li>
+        <li><a href="<?= base_url(); ?>/Pelamar/index/<?= $lamaran[0]['id_pelamar']; ?>">Profil</a></li>
         <li><a href="#" class="active">Histori</a></li>
       </ul>
     </div>
+
+    <!-- Center side contains vertical line which dividing into two side (left & right) -->
     <div class="divider divider-horizontal"></div>
-    <div class="flex flex-wrap mb-11">
-      <div class="card card-compact w-96 bg-base-100 shadow-xl px-14">
-        <figure><img src="/img/lowongan/logo1.png" alt="Logo" /></figure>
-        <div class="card-body">
-          <h2 class="text-3xl font-bold">PT Sampoerna</h2>
-          <h2 class="text-2xl font-semibold">Magang</h2>
-          <p>Social Media Strategist</p>
-          <h2 class="text-2xl font-semibold">Tanggal Kirim</h2>
-          <p>12 Mei 2021</p>
-          <h2 class="text-2xl font-semibold">Deadline Lamaran</h2>
-          <p>15 Mei 2021</p>
-          <div class="card-actions justify-end">
-            <a class="btn btn-primary">Detail</a>
+
+    <!-- Right side contains the application history of applicant -->
+    <div class="grid grid-cols-3 gap-x-2 gap-y-5 place-items-center mb-14">
+
+      <?php foreach ($lamaran as $l) : ?>
+        <!-- Card items of application history -->
+        <div class="card card-compact w-80 bg-base-100 shadow-xl px-8 min-h-full">
+
+          <!-- Image logo of recruiter's company -->
+          <img src="<?= base_url(); ?>/img/rekruter/<?= $l['foto_logo']; ?>" class="h-40 w-40 ml-12 mt-10" alt="Logo Perusahaan" style="border: 1px solid red;"/>
+
+          <!-- Fill in the vacancies that have been applied for -->
+          <div class="card-body">
+            <p class="text-2xl font-semibold mt-2"><?= $l['nama_perusahaan']; ?></p>
+            <div class="mt-2">
+              <p class="text-xl font-semibold"><?= $l['tipe']; ?></p>
+              <p><?= $l['posisi']; ?></p>
+            </div>
+            <div class="mt-2">
+              <p class="text-xl font-semibold">Tanggal Kirim</p>
+              <p><?= date('j F Y', strtotime($l['updated_at'])); ?></p>
+            </div>
+            <div class="mt-2">
+              <p class="text-xl font-semibold">Deadline Lowongan</p>
+              <p><?= date('j F Y', strtotime($l['deadline'])); ?></p>
+            </div>
+
+            <!-- Button for the details -->
+            <div class="card-actions justify-center my-5">
+              <a href="<?= base_url(); ?>" class="btn btn-primary px-10">Detail</a>
+            </div>
           </div>
         </div>
-      </div> 
-      <div class="card card-compact w-96 bg-base-100 shadow-xl px-14">
-        <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-        <div class="card-body">
-          <h2 class="text-3xl font-bold"></h2>
-          <h2 class="text-2xl font-semibold">Magang</h2>
-          <p></p>
-          <h2 class="text-2xl font-semibold">Tanggal Kirim</h2>
-          <p></p>
-          <h2 class="text-2xl font-semibold">Deadline Lamaran</h2>
-          <p></p>
-          <div class="card-actions justify-end">
-            <a class="btn btn-primary">Detail</a>
-          </div>
-        </div>
-      </div>
+      <?php endforeach; ?>
+
     </div>
   </div>
-  </div>
+</div>
 
-
+<!-- End of section content -->
 <?= $this->endSection(); ?>
