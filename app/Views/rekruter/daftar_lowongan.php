@@ -2,6 +2,18 @@
 
 <?= $this->section('content'); ?>
 
+<?php if (session()->getFlashdata('success')) { ?>
+  <div class="mt-0 mb-3 w-auto left-1/3 z-10 fixed">
+    <div class="alert alert-success shadow-lg" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span><?php echo session()->getFlashdata('success'); ?></span>
+      <span class="ml-20 font-bold text-base cursor-pointer hover:bg-slate-500 hover:rounded hover:py-px hover:px-1" onclick="this.parentElement.classList.add('hidden')">&times;</span>
+    </div>
+  </div>
+<?php }; ?>
+
 <form action="">
   <div class="form-control mt-32 mx-32">
     <div class="flex">
@@ -33,7 +45,7 @@
       </tr>
     </thead>
 
-    <?php $no = 1 + (10 * ($current_page - 1));   ?>
+    <?php $no = 1 + (5 * ($current_page - 1));   ?>
     <?php foreach ($daftar_lowongan as $dl) : ?>
       <tbody>
         <tr class="hover">

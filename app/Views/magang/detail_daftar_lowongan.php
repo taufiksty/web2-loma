@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="flex justify-end w-full mt-24">
-      <a class="btn btn-error px-5 mr-5 font-medium text-base">Hapus Lowongan</a>
+      <a href="<?= base_url(); ?>/Magang/hapusLowongan/<?= $detail_magang[0]['id']; ?>/<?= $detail_magang[0]['id_rekruter']; ?>" class="btn btn-error px-5 mr-5 font-medium text-base" onclick="confirm('Apakah anda yakin ingin menghapus lowongan? Pelamar yang telah melamar akan diberitahu secara otomatis.');">Hapus Lowongan</a>
       <a class="btn btn-warning px-16 font-medium text-base">Edit Lowongan</a>
     </div>
   </div>

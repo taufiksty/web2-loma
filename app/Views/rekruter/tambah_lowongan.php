@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<form action="/Rekruter/simpanLowongan/<?= $rekruter['id']; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?= base_url(); ?>/Rekruter/simpanLowongan/<?= $rekruter['id']; ?>" method="POST" enctype="multipart/form-data">
   <?= csrf_field(); ?>
 
   <div class="h-fit card place-items-center mt-28 px-72 w-full pb-5 overflow-y-auto">
@@ -11,7 +11,7 @@
 
     <label class="input-group input-group-vertical">
       <span>Jenis Lowongan</span>
-      <select class="select select-bordered w-full rounded-none rounded-b-lg" name="jenis_lowongan" id="jenisLowongan">
+      <select class="select select-bordered w-full rounded-none rounded-b-lg <?= ($validation->hasError('jenis_lowongan')) ? 'is-invalid' : ''; ?>" name="jenis_lowongan" id="jenisLowongan" required>
         <option disabled selected>Pilih jenis lowongan?</option>
         <option value="Magang">Magang</option>
         <option value="Parttime">Parttime</option>
@@ -19,47 +19,50 @@
       </select>
     </label>
     <label class="label w-full invalid:block">
-      <span class="label-text-alt text-red-500"></span>
+      <span class="label-text-alt text-red-500"><?= $validation->getError('jenis_lowongan'); ?></span>
     </label>
 
     <label class="input-group input-group-vertical">
       <span>Lama Kegiatan</span>
       <label class="input-group rounded-none w-full">
         <div class="w-full">
-          <input type="number" placeholder="cth. 3" class="input input-bordered w-full" name="lama_kegiatan" id="lamaKegiatan" />
+          <input type="number" placeholder="cth. 3" class="input input-bordered w-full <?= ($validation->hasError('lama_kegiatan')) ? 'is-invalid' : ''; ?>" name="lama_kegiatan" id="lamaKegiatan" />
         </div>
         <span class="px-16 rounded-none">Bulan</span>
       </label>
     </label>
+    <label class="label w-full invalid:block">
+      <small class="text-red-500"><?= $validation->getError('lama_kegiatan'); ?></small>
+    </label>
 
     <label class="input-group input-group-vertical mt-5">
       <span>Posisi</span>
-      <input type="text" class="input input-bordered input-display" id="posisi" name="posisi" value="" placeholder="cth. Web Designer" />
+      <input type="text" class="input input-bordered input-display <?= ($validation->hasError('posisi')) ? 'is-invalid' : ''; ?>" id="posisi" name="posisi" value="" placeholder="cth. Web Designer" />
     </label>
     <label class="label w-full invalid:block">
-      <span class="label-text-alt text-red-500"></span>
+      <span class="label-text-alt text-red-500"><?= $validation->getError('posisi'); ?></span>
     </label>
 
     <label class="input-group input-group-vertical mt-5">
       <span>Wilayah Penempatan</span>
-      <input type="text" class="input input-bordered input-display" id="wilayahPenempatan" name="wilayah_penempatan" value="" placeholder="cth. Jakarta Selatan" />
+      <input type="text" class="input input-bordered input-display <?= ($validation->hasError('wilayah_penempatan')) ? 'is-invalid' : ''; ?>" id="wilayahPenempatan" name="wilayah_penempatan" value="" placeholder="cth. Jakarta Selatan" />
     </label>
     <label class="label w-full invalid:block">
-      <span class="label-text-alt text-red-500"></span>
+      <span class="label-text-alt text-red-500"><?= $validation->getError('wilayah_penempatan'); ?></span>
     </label>
 
     <label class="input-group input-group-vertical mt-5">
       <span>Dealine</span>
-      <input type="date" class="input input-bordered input-display tm" id="deadline" name="deadline" value="" placeholder="dd/mm/yyyy" />
+      <input type="date" class="input input-bordered input-display tm <?= ($validation->hasError('deadline')) ? 'is-invalid' : ''; ?>" id="deadline" name="deadline" value="" placeholder="dd/mm/yyyy" />
     </label>
     <label class="label w-full invalid:block">
-      <span class="label-text-alt text-red-500"></span>
+      <span class="label-text-alt text-red-500"><?= $validation->getError('deadline'); ?></span>
     </label>
 
     <label id="inputKualifikasi" class="input-group input-group-vertical mt-14">
       <span>Kualifikasi</span>
-      <input type="text" class="input input-bordered input-display" id="kualifikasi1" name="kualifikasi" value="" placeholder="Masukkan kualifikasi" />
-      <input type="text" class="input input-bordered input-display" id="kualifikasi2" name="kualifikasi" value="" placeholder="Masukkan kualifikasi" />
+      <input type="text" class="input input-bordered input-display" id="kualifikasi1" name="kualifikasi[]" value="" placeholder="Masukkan kualifikasi" />
+      <input type="text" class="input input-bordered input-display" id="kualifikasi2" name="kualifikasi[]" value="" placeholder="Masukkan kualifikasi" />
     </label>
     <label class="label w-full invalid:block">
       <span class="label-text-alt text-red-500"></span>
@@ -71,8 +74,8 @@
 
     <label id="inputDeskripsi" class="input-group input-group-vertical mt-14">
       <span>Deskripsi Pekerjaan</span>
-      <input type="text" class="input input-bordered input-display" id="deskripsiPekerjaan1" name="deskripsi_pekerjaan" value="" placeholder="Masukkan deskripsi pekerjaan" />
-      <input type="text" class="input input-bordered input-display" id="deskripsiPekerjaan2" name="deskripsi_pekerjaan" value="" placeholder="Masukkan deskripsi pekerjaan" />
+      <input type="text" class="input input-bordered input-display" id="deskripsiPekerjaan1" name="deskripsi_pekerjaan[]" value="" placeholder="Masukkan deskripsi pekerjaan" />
+      <input type="text" class="input input-bordered input-display" id="deskripsiPekerjaan2" name="deskripsi_pekerjaan[]" value="" placeholder="Masukkan deskripsi pekerjaan" />
     </label>
     <label class="label w-full invalid:block">
       <span class="label-text-alt text-red-500"></span>
@@ -84,8 +87,8 @@
 
     <label id="inputBenefit" class="input-group input-group-vertical mt-14">
       <span>Benefit dll</span>
-      <input type="text" class="input input-bordered input-display" id="benefitDll1" name="benefit_dll" value="" placeholder="Masukkan benefit dll" />
-      <input type="text" class="input input-bordered input-display" id="benefitDll2" name="benefit_dll" value="" placeholder="Masukkan benefit dll" />
+      <input type="text" class="input input-bordered input-display" id="benefitDll1" name="benefit_dll[]" value="" placeholder="Masukkan benefit dll" />
+      <input type="text" class="input input-bordered input-display" id="benefitDll2" name="benefit_dll[]" value="" placeholder="Masukkan benefit dll" />
     </label>
     <label class="label w-full invalid:block">
       <span class="label-text-alt text-red-500"></span>
