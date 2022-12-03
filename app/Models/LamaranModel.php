@@ -30,4 +30,9 @@ class LamaranModel extends Model
                 ->findAll();
   }
 
+  public function getAllLamaran()
+  {
+    return $this->findAll();
+  }
+
 }

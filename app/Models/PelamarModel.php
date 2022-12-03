@@ -15,4 +15,9 @@ class PelamarModel extends Model
     return $this->where(['id' => $id])->first();
   }
 
+  public function getAllPelamar()
+  {
+    return $this->findAll();
+  }
+
 }
