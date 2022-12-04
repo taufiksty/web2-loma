@@ -12,9 +12,9 @@ class LowonganModel extends Model
   protected $primaryKey = 'id';
   // protected $useSoftDeletes = false;
 
-  // public function getAllLowongan()
+  // public function getAllLowonganByIdRekruter($id_rekruter)
   // {
-  //   $this->findAll();
+  //   $this->where(['id_rekruter' => $id_rekruter])->findAll();
   // }
 
   public function getLowonganId()
@@ -53,5 +53,6 @@ class LowonganModel extends Model
   {
     $this->where(['id' => $id])->first();
   }
+
 }
 

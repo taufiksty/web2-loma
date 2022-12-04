@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url(); ?>/img/apple-icon.png" />
   <link rel="icon" type="image/png" href="<?= base_url(); ?>/img/favicon.png" />
-  <title>Data Rekruter</title>
+  <title>Loma | Data Rekruter</title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Font Awesome Icons -->
@@ -31,11 +31,13 @@
   <link href="<?= base_url(); ?>/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Main Styling -->
   <link href="<?= base_url(); ?>/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.42.1/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
-<body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
+<body class="m-0 font-sans antialiased h-full font-normal text-base leading-default text-slate-500">
   <!-- sidenav  -->
   <aside class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent">
     <div class="h-19.5">
@@ -294,6 +296,17 @@
     <!-- cards -->
     <div class="w-full px-6 py-6 mx-auto">
 
+      <?php if (session()->getFlashdata('message')) { ?>
+        <div class="mt-0 mb-3 left-1/2 w-auto z-10 fixed">
+          <div class="alert alert-success shadow-lg" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span><?php echo session()->getFlashdata('message'); ?></span>
+            <span class="ml-20 font-bold text-base cursor-pointer hover:bg-slate-500 hover:rounded hover:py-px hover:px-1" onclick="this.parentElement.classList.add('hidden')">&times;</span>
+          </div>
+        </div>
+      <?php }; ?>
 
       <div class="w-full px-6 py-6 mx-auto">
         <!-- table 1 -->
@@ -341,8 +354,8 @@
                             <span class="font-semibold leading-tight text-xs text-slate-400"><?= date('d/m/Y', strtotime($r['updated_at'])); ?></span>
                           </td>
                           <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent flex flex-col justify-items-center">
-                            <a href="<?= base_url(); ?>/Admin/editRekruter/<?= $r['id']; ?>" class="font-semibold inline-block leading-tight text-xs text-slate-400"> Edit </a>
-                            <a href="<?= base_url(); ?>/Admin/hapusRekruter/<?= $r['id']; ?>" class="font-semibold leading-tight text-xs text-red-400 pt-2"> Hapus </a>
+                            <a href="<?= base_url(); ?>/Admin/editRekruter/<?= $admin['id']; ?>/<?= $r['id']; ?>" class="font-semibold inline-block leading-tight text-xs text-slate-400"> Edit </a>
+                            <a href="<?= base_url(); ?>/Admin/hapusRekruter/<?= $admin['id']; ?>/<?= $r['id']; ?>" class="font-semibold leading-tight text-xs text-red-400 pt-2" onclick="confirm('Apakah Anda ingin menghapus data rekruter <?= $r['nama_perusahaan']; ?>? *Jika [Ya] Maka seluruh lowongan yang telah dibuat rekruter akan terhapus juga. Hati-hati!');"> Hapus </a>
                           </td>
                         </tr>
                       <?php endforeach; ?>

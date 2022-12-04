@@ -300,7 +300,7 @@
       <div class="w-full px-6 py-6 mx-auto">
         <!-- table 1 -->
 
-        <form action="<?= base_url(); ?>/Admin/simpanDataPelamar/<?= $pelamar['id']; ?>" method="POST" enctype="multipart/form-data">
+        <form action="<?= base_url(); ?>/Admin/simpanDataPelamar/<?= $admin['id']; ?>/<?= $pelamar['id']; ?>" method="POST" enctype="multipart/form-data">
           <?= csrf_field(); ?>
 
           <input type="hidden" name="fotoProfilOld" value="<?= $pelamar['foto_profil']; ?>">
@@ -343,12 +343,12 @@
 
             <label class="input-group input-group-vertical mt-5">
               <span>Email</span>
-              <input type="email" class="input input-bordered input-display" id="email" name="email" value="<?= $pelamar['email']; ?>" placeholder="email" disabled />
+              <input type="email" class="input input-bordered input-display" id="email" name="email" value="<?= $pelamar['email']; ?>" placeholder="email" />
             </label>
 
             <label class="input-group input-group-vertical mt-5">
               <span>Username</span>
-              <input type="text" class="input input-bordered input-display" id="username" name="username" value="<?= $pelamar['username']; ?>" placeholder="username" disabled />
+              <input type="text" class="input input-bordered input-display" id="username" name="username" value="<?= $pelamar['username']; ?>" placeholder="username" />
             </label>
 
             <label class="input-group input-group-vertical mt-5">
