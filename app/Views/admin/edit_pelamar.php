@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url(); ?>/img/apple-icon.png" />
   <link rel="icon" type="image/png" href="<?= base_url(); ?>/img/favicon.png" />
-  <title>Data Rekruter</title>
+  <title>Data Pelamar</title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Font Awesome Icons -->
@@ -31,7 +31,9 @@
   <link href="<?= base_url(); ?>/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Main Styling -->
   <link href="<?= base_url(); ?>/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.42.1/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
@@ -71,18 +73,16 @@
         </li>
 
         <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="<?= base_url(); ?>/Admin/dataPelamar/<?= $admin['id']; ?>">
-            <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+          <a class="py-2.7 text-sm shadow-soft-xl ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors" href="">
+            <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
                     <g transform="translate(1716.000000, 291.000000)">
                       <g transform="translate(153.000000, 2.000000)">
-                        <path class="fill-slate-800 opacity-60" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z">
-                        </path>
-                        <path class="fill-slate-800" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z">
-                        </path>
+                        <path class="opacity-60" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
+                        <path class="" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
                       </g>
                     </g>
                   </g>
@@ -117,16 +117,18 @@
         </li>
 
         <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-sm shadow-soft-xl ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors" href="">
-            <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="<?= base_url(); ?>/Admin/dataLowongan/<?= $admin['id']; ?>">
+            <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
                     <g transform="translate(1716.000000, 291.000000)">
                       <g transform="translate(153.000000, 2.000000)">
-                        <path class="opacity-60" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
-                        <path class="" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                        <path class="fill-slate-800 opacity-60" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z">
+                        </path>
+                        <path class="fill-slate-800" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z">
+                        </path>
                       </g>
                     </g>
                   </g>
@@ -181,9 +183,9 @@
             <li class="leading-normal text-sm">
               <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
             </li>
-            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Data Lowongan</li>
+            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Data Pelamar</li>
           </ol>
-          <h6 class="mb-0 font-bold capitalize">Data Lowongan</h6>
+          <h6 class="mb-0 font-bold capitalize">Data Pelamar</h6>
         </nav>
 
         <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
@@ -298,60 +300,130 @@
       <div class="w-full px-6 py-6 mx-auto">
         <!-- table 1 -->
 
-        <div class="flex flex-wrap -mx-3">
-          <div class="flex-none w-full max-w-full px-3">
-            <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-              <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <h6>Data Lowongan</h6>
+        <form action="<?= base_url(); ?>/Admin/simpanDataPelamar/<?= $pelamar['id']; ?>" method="POST" enctype="multipart/form-data">
+          <?= csrf_field(); ?>
+
+          <input type="hidden" name="fotoProfilOld" value="<?= $pelamar['foto_profil']; ?>">
+
+          <div class="h-fit card rounded-box place-items-center w-full pb-5 overflow-y-auto">
+
+            <div class="alert alert-info shadow-lg mb-3 w-auto z-10 fixed hidden" id="alertLisAndSer">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>Anda sudah memasukkan 5 sertifikasi.</span>
+              <span class="ml-20 font-bold text-base cursor-pointer hover:bg-slate-500 hover:rounded hover:py-px hover:px-1" onclick="this.parentElement.classList.add('hidden')">&times;</span>
+            </div>
+
+            <div class="avatar mb-8 flex flex-row gap-x-7">
+              <div class="w-48 rounded basis-1/2">
+                <img src="/img/pelamar/<?= $pelamar['foto_profil']; ?>" class="img-thumbnail img-preview" />
               </div>
-              <div class="flex-auto px-0 pt-0 pb-2">
-                <div class="p-0 overflow-x-auto">
-                  <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-                    <thead class="align-bottom">
-                      <tr>
-                        <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Nama Perusahaan<br><span class="font-normal">Wilayah penempatan</span></th>
-                        <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">tipe<br><span class="font-normal">posisi</span></th>
-                        <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">deadline</th>
-                        <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Last Updated</th>
-                        <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach ($lowongan as $l) : ?>
-                        <tr>
-                          <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                            <div class="flex px-2 py-1">
-                              <div>
-                                <img src="<?= base_url(); ?>/img/rekruter/<?= $l['foto_logo']; ?>" class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl" alt="user6" />
-                              </div>
-                              <div class="flex flex-col justify-center">
-                                <h6 class="mb-0 leading-normal text-sm"><?= $l['nama_perusahaan']; ?></h6>
-                                <p class="mb-0 leading-tight text-xs text-slate-400"><?= $l['wilayah_penempatan']; ?></p>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                            <p class="mb-0 font-semibold leading-tight text-xs"><?= $l['tipe']; ?></p>
-                            <p class="mb-0 leading-tight text-xs text-slate-400"><?= $l['posisi']; ?></p>
-                          </td>
-                          <td class="p-2 text-center align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                            <span class="font-semibold leading-tight text-xs text-slate-400"><?= date('d/m/Y', strtotime($l['deadline'])); ?></span>
-                          </td>
-                          <td class="p-2 text-center align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                            <span class="font-semibold leading-tight text-xs text-slate-400"><?= date('d/m/Y', strtotime($l['updated_at'])); ?></span>
-                          </td>
-                          <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                            <a href="<?= base_url(); ?>/Admin/hapusPelamar/<?= $l['id']; ?>" class="font-semibold leading-tight text-xs text-red-400 pt-2"> Hapus </a>
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
-                </div>
+              <div class="foto-profil-input basis-1/2 pt-20">
+                <label class="block">
+                  <span class="sr-only">Choose profile photo</span>
+                  <input type="file" name="fotoProfil" id="fotoProfil" onchange="previewImg()" class="block w-full text-sm text-slate-500
+              file:mr-4 file:py-2 file:px-4
+              file:rounded-full file:border-0
+              file:text-sm file:font-semibold
+              file:bg-violet-50 file:text-violet-700
+              hover:file:bg-violet-100
+            " />
+                </label>
               </div>
             </div>
+
+            <label class="input-group input-group-vertical">
+              <span>Nama</span>
+              <input type="text" class="input input-bordered input-display <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" value="<?= (old('nama')) ? old('nama') : $pelamar['nama']; ?>" placeholder="nama" />
+            </label>
+            <label class="label w-full hidden invalid:block">
+              <span class="label-text-alt invalid:text-red-500"><?= $validation->getError('nama'); ?></span>
+            </label>
+
+            <label class="input-group input-group-vertical mt-5">
+              <span>Email</span>
+              <input type="email" class="input input-bordered input-display" id="email" name="email" value="<?= $pelamar['email']; ?>" placeholder="email" disabled />
+            </label>
+
+            <label class="input-group input-group-vertical mt-5">
+              <span>Username</span>
+              <input type="text" class="input input-bordered input-display" id="username" name="username" value="<?= $pelamar['username']; ?>" placeholder="username" disabled />
+            </label>
+
+            <label class="input-group input-group-vertical mt-5">
+              <span>Nomor Telepon</span>
+              <input type="text" class="input input-bordered input-display <?= ($validation->hasError('no_telp')) ? 'is-invalid' : ''; ?>" id="no_telp" name="no_telp" value="<?= (old('no_telp')) ? old('no_telp') : $pelamar['no_telp']; ?>" placeholder="cth. 08979320117" />
+            </label>
+            <label class="label w-full hidden invalid:block">
+              <span class="label-text-alt invalid:text-red-500"><?= $validation->getError('no_telp'); ?></span>
+            </label>
+
+            <label class="input-group input-group-vertical mt-5">
+              <span>Alamat Tempat Tinggal</span>
+              <input type="text" class="input input-bordered input-display" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $pelamar['alamat']; ?>" placeholder="cth. Jl. Wahid Khasim No.38, Limo, Depok, Jawa Barat" />
+            </label>
+
+            <label class="input-group input-group-vertical mt-5">
+              <span>Tanggal Lahir</span>
+              <input type="date" class="input input-bordered input-display" id="tl" name="tl" value="<?= (old('tl')) ? old('tl') : $pelamar['tl']; ?>" />
+            </label>
+
+            <label class="input-group input-group-vertical mt-5">
+              <span>Gender</span>
+              <div class="form-control">
+                <label class="label cursor-pointer">
+                  <span class="bg-white">Laki-laki</span>
+                  <input type="radio" name="gender" class="radio checked:bg-primary" value="Laki-laki" checked />
+                </label>
+              </div>
+              <div class="form-control">
+                <label class="label cursor-pointer">
+                  <span class="bg-white">Perempuan</span>
+                  <input type="radio" name="gender" class="radio checked:bg-primary" value="Perempuan" />
+                </label>
+              </div>
+            </label>
+
+            <br><br>
+            <label class="input-group input-group-vertical mt-5">
+              <span>Asal Universitas</span>
+              <input type="text" class="input input-bordered input-display <?= ($validation->hasError('univ')) ? 'is-invalid' : ''; ?>" id="univ" name="univ" value="<?= (old('univ')) ? old('univ') : $pelamar['univ']; ?>" />
+            </label>
+            <label class="label w-full hidden invalid:block">
+              <span class="label-text-alt invalid:text-red-500"><?= $validation->getError('univ'); ?></span>
+            </label>
+
+            <label class="input-group input-group-vertical mt-5">
+              <span>Program Studi</span>
+              <input type="text" class="input input-bordered input-display <?= ($validation->hasError('prodi')) ? 'is-invalid' : ''; ?>" id="prodi" name="prodi" value="<?= (old('prodi')) ? old('prodi') : $pelamar['prodi']; ?>" />
+            </label>
+            <label class="label w-full hidden invalid:block">
+              <span class="label-text-alt invalid:text-red-500"><?= $validation->getError('prodi'); ?></span>
+            </label>
+
+            <br><br>
+            <p class="text-left text-xs">(Maksimal 5 Lisensi atau Sertifikasi)</p>
+            <label class="input-group input-group-vertical mt-5">
+              <div class="grid grid-cols-2 gap-x-4 w-full" id="inputLisAndSer">
+                <span>Lisensi dan Sertifikasi</span>
+                <span class="rounded-t-lg">ID Kredensial</span>
+                <?php foreach ($lis_and_ser as $ls) : ?>
+                  <input type="text" class="hidden input-id" name="id[]" value="<?= $ls['id']; ?>">
+                  <input type="text" class="rounded-b-lg border-x-2 border-b-2 p-3 input-ls" id="ls" name="ls[]" value="<?= (old('ls')) ? old('ls') : $ls['ls']; ?>" placeholder="Masukkan sertifikasi" />
+                  <input type="text" class="rounded-b-lg border-x-2 border-b-2 p-3 input-id_kred" id="id_kred" name="id_kred[]" value="<?= (old('id_kred')) ? old('id_kred') : $ls['id_kred']; ?>" placeholder="Masukkan ID Kredensial" />
+                <?php endforeach; ?>
+              </div>
+            </label>
+
+            
+            <div class="flex justify-center mt-3 gap-5 w-full">
+              <button type="button" class="btn btn-outline btn-info basis-4/12" id="tambahLisAndSer">+ Tambah</button>
+              <a href="<?= base_url(); ?>/Admin/hapusLisensiSertifikasi/<?= $lis_and_ser[count($lis_and_ser) - 1]['id']; ?>/<?= $admin['id']; ?>/<?= $pelamar['id']; ?>" class="btn btn-outline btn-error basis-4/12" id="hapusLisAndSer">- Hapus</a>
+            </div>
+            <button type="submit" class="btn btn-accent my-12 px-12">Simpan</button>
           </div>
-        </div>
+        </form>
 
       </div>
 
@@ -393,12 +465,47 @@
   </main>
 </body>
 <!-- plugin for charts  -->
-<script src="./assets/js/plugins/chartjs.min.js" async></script>
+<script src="<?= base_url(); ?>/js/plugins/chartjs.min.js" async></script>
 <!-- plugin for scrollbar  -->
-<script src="./assets/js/plugins/perfect-scrollbar.min.js" async></script>
+<script src="<?= base_url(); ?>/js/plugins/perfect-scrollbar.min.js" async></script>
 <!-- github button -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- main script file  -->
-<script src="./assets/js/soft-ui-dashboard-tailwind.js?v=1.0.4" async></script>
+<script src="<?= base_url(); ?>/js/soft-ui-dashboard-tailwind.js?v=1.0.4" async></script>
+<script>
+  function previewImg() {
+    const fotoProfil = document.querySelector('#fotoProfil');
+    const imgPreview = document.querySelector('.img-preview');
+
+    const fotoProfilFile = new FileReader();
+    fotoProfilFile.readAsDataURL(fotoProfil.files[0]);
+
+    fotoProfilFile.onload = function(e) {
+      imgPreview.src = e.target.result;
+    }
+  }
+
+  $(document).ready(function() {
+    $('#tambahLisAndSer').click(function() {
+      const inputLisAndSer = document.querySelectorAll('#inputLisAndSer .input-ls');
+      if (inputLisAndSer.length >= 5) {
+        document.getElementById('alertLisAndSer').classList.remove('hidden');
+      } else {
+        $('#inputLisAndSer').append('<input type="text" class="hidden input-id" name="id[]" value="0">');
+        $('#inputLisAndSer').append('<input type="text" class="rounded-b-lg border-x-2 border-b-2 p-3 input-ls" id="ls" name="ls[]" value="" placeholder="Masukkan Sertifikasi" />');
+        $('#inputLisAndSer').append('<input type="text" class="rounded-b-lg border-x-2 border-b-2 p-3 input-id_kred" id="id_kred" name="id_kred[]" value="" placeholder="Masukkan ID Kredensial" />');
+      }
+    })
+    $('#hapusLisAndSer').click(function() {
+      const inputId = document.querySelectorAll('#inputLisAndSer .input-id');
+      const inputLisAndSer = document.querySelectorAll('#inputLisAndSer .input-ls');
+      const inputIdKred = document.querySelectorAll('#inputLisAndSer .input-id_kred');
+      let n = inputLisAndSer.length - 1;
+      inputId[n].remove();
+      inputLisAndSer[n].remove();
+      inputIdKred[n].remove();
+    })
+  })
+</script>
 
 </html>

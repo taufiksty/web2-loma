@@ -131,6 +131,7 @@ class Rekruter extends BaseController
 
     $data = [
       'title' => 'Loma | Daftar Lowongan',
+      'rekruter' => $this->RekruterModel->getRekruter($id),
       'daftar_lowongan' => $daftar_lowongan->getDaftarLowongan($id, 5),
       'pager' => $daftar_lowongan->pager,
       'current_page' => $currentPage

@@ -91,7 +91,7 @@
         </li>
 
         <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="<?= base_url(); ?>/admin/dataRekruter">
+          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="<?= base_url(); ?>/admin/dataRekruter/<?= $admin['id']; ?>">
             <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -112,7 +112,7 @@
         </li>
 
         <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="<?= base_url(); ?>/admin/dataLowongan">
+          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="<?= base_url(); ?>/admin/dataLowongan/<?= $admin['id']; ?>">
             <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -344,7 +344,7 @@
                   <div>
                     <p class="mb-0 font-sans font-semibold leading-normal text-sm">Jumlah Lowongan</p>
                     <h5 class="mb-0 font-bold">
-                      100
+                      <?= $lowongan; ?>
                       <span class="leading-normal text-red-600 text-sm font-weight-bolder">-2%</span>
                     </h5>
                   </div>
@@ -443,7 +443,7 @@
                       </div>
                       <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Lowongan</p>
                     </div>
-                    <h4 class="font-bold">100</h4>
+                    <h4 class="font-bold"><?= $lowongan; ?></h4>
                     <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200">
                       <div class="duration-600 ease-soft -mt-0.38 w-9/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>

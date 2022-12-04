@@ -29,7 +29,7 @@
         <div class="card card-compact w-80 bg-base-100 shadow-xl px-8 min-h-full">
 
           <!-- Image logo of recruiter's company -->
-          <img src="<?= base_url(); ?>/img/rekruter/<?= $l['foto_logo']; ?>" class="h-40 w-40 ml-12 mt-10" alt="Logo Perusahaan" style="border: 1px solid red;"/>
+          <img src="<?= base_url(); ?>/img/rekruter/<?= $l['foto_logo']; ?>" class="h-40 w-40 ml-12 mt-10" alt="Logo Perusahaan"/>
 
           <!-- Fill in the vacancies that have been applied for -->
           <div class="card-body">

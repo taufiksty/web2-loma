@@ -181,9 +181,9 @@
             <li class="leading-normal text-sm">
               <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
             </li>
-            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
+            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Data Pelamar</li>
           </ol>
-          <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+          <h6 class="mb-0 font-bold capitalize">Data Pelamar</h6>
         </nav>
 
         <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
@@ -338,10 +338,10 @@
                             <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-3.6 text-xs rounded-1.8 py-2.2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Offline</span>
                           </td>
                           <td class="p-2 text-center align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                            <span class="font-semibold leading-tight text-xs text-slate-400"><?= $p['updated_at']; ?></span>
+                            <span class="font-semibold leading-tight text-xs text-slate-400"><?= date('d/m/Y', strtotime($p['updated_at'])); ?></span>
                           </td>
                           <td class="p-5 align-middle flex flex-col justify-items-center bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                            <a href="<?= base_url(); ?>/Admin/editPelamar/<?= $p['id']; ?>" class="font-semibold inline-block leading-tight text-xs text-slate-400"> Edit </a>
+                            <a href="<?= base_url(); ?>/Admin/editPelamar/<?= $admin['id']; ?>/<?= $p['id']; ?>" class="font-semibold inline-block leading-tight text-xs text-slate-400"> Edit </a>
                             <a href="<?= base_url(); ?>/Admin/hapusPelamar/<?= $p['id']; ?>" class="font-semibold leading-tight text-xs text-red-400 pt-2"> Hapus </a>
                           </td>
                         </tr>

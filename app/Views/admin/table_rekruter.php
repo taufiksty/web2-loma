@@ -181,9 +181,9 @@
             <li class="leading-normal text-sm">
               <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
             </li>
-            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
+            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Data Rekruter</li>
           </ol>
-          <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+          <h6 class="mb-0 font-bold capitalize">Data Rekruter</h6>
         </nav>
 
         <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
@@ -341,8 +341,8 @@
                             <span class="font-semibold leading-tight text-xs text-slate-400"><?= date('d/m/Y', strtotime($r['updated_at'])); ?></span>
                           </td>
                           <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent flex flex-col justify-items-center">
-                            <a href="<?= base_url(); ?>/Admin/editPelamar/<?= $r['id']; ?>" class="font-semibold inline-block leading-tight text-xs text-slate-400"> Edit </a>
-                            <a href="<?= base_url(); ?>/Admin/hapusPelamar/<?= $r['id']; ?>" class="font-semibold leading-tight text-xs text-red-400 pt-2"> Hapus </a>
+                            <a href="<?= base_url(); ?>/Admin/editRekruter/<?= $r['id']; ?>" class="font-semibold inline-block leading-tight text-xs text-slate-400"> Edit </a>
+                            <a href="<?= base_url(); ?>/Admin/hapusRekruter/<?= $r['id']; ?>" class="font-semibold leading-tight text-xs text-red-400 pt-2"> Hapus </a>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -394,12 +394,12 @@
   </main>
 </body>
 <!-- plugin for charts  -->
-<script src="./assets/js/plugins/chartjs.min.js" async></script>
+<script src="<?= base_url(); ?>/js/plugins/chartjs.min.js" async></script>
 <!-- plugin for scrollbar  -->
-<script src="./assets/js/plugins/perfect-scrollbar.min.js" async></script>
+<script src="<?= base_url(); ?>/js/plugins/perfect-scrollbar.min.js" async></script>
 <!-- github button -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- main script file  -->
-<script src="./assets/js/soft-ui-dashboard-tailwind.js?v=1.0.4" async></script>
+<script src="<?= base_url(); ?>/js/soft-ui-dashboard-tailwind.js?v=1.0.4" async></script>
 
 </html>

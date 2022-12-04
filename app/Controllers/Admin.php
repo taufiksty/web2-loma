@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controllers;
 
@@ -7,6 +7,7 @@ use App\Models\LamaranModel;
 use App\Models\PelamarModel;
 use App\Models\RekruterModel;
 use App\Models\LowonganModel;
+use App\Models\LisAndSerModel;
 
 class Admin extends BaseController
 {
@@ -19,6 +20,7 @@ class Admin extends BaseController
     $this->RekruterModel = new RekruterModel();
     $this->LowonganModel = new LowonganModel();
     $this->LamaranModel = new LamaranModel();
+    $this->LisAndSerModel = new LisAndSerModel();
   }
 
   /**
@@ -33,7 +35,7 @@ class Admin extends BaseController
       'admin' => $this->AdminModel->getAdmin($id),
       'pelamar' => $countPelamar,
       'rekruter' => $countRekruter,
-      // 'lowongan' => count($this->LowonganModel->getAllLowongan()),
+      'lowongan' => count($this->LowonganModel->findAll()),
       'count_admin' => $this->AdminModel->getCountAdmin(),
       'count_user' => $countPelamar + $countRekruter,
       'lamaran' => count($this->LamaranModel->getAllLamaran())
@@ -56,24 +58,31 @@ class Admin extends BaseController
     return view('admin/table_pelamar', $data);
   }
 
-  public function editPelamar($id_pelamar)
+  public function editPelamar($id_admin, $id_pelamar)
   {
     $data = [
-      'title' => 'Loma | Edit Data Pelamar',
-      'pelamar' => $this->PelamarModel->getPelamar($id_pelamar)
+      'admin' => $this->AdminModel->getAdmin($id_admin),
+      'pelamar' => $this->PelamarModel->getPelamar($id_pelamar),
+      'lis_and_ser' => $this->LisAndSerModel->getLisAndSer($id_pelamar),
+      'validation' => \Config\Services::validation()
     ];
 
-    return view('admin/editPelamar', $data);
+    return view('admin/edit_pelamar', $data);
   }
-  
+
+  public function hapusLisensiSertifikasi($id_lis_ser, $id_admin, $id_pelamar)
+  {
+    $this->LisAndSerModel->delete($id_lis_ser);
+
+    return redirect()->to('/Admin/editPelamar/' . $id_admin . '/' . $id_pelamar)->withInput();
+  }
   public function simpanDataPelamar($id_pelamar)
   {
-
   }
 
 
   /**
-   * Kelola Data Rrkruter
+   * Kelola Data Rekruter
    */
   public function dataRekruter($id)
   {
@@ -85,9 +94,14 @@ class Admin extends BaseController
     return view('admin/table_rekruter', $data);
   }
 
-  public function dataLowongan()
+  public function dataLowongan($id)
   {
-    return view('admin/table_lowongan');
+    $data = [
+      'admin' => $this->AdminModel->getAdmin($id),
+      'lowongan' => $this->LowonganModel->select('lowongan.id, lowongan.id_rekruter, lowongan.tipe, lowongan.posisi, lowongan.wilayah_penempatan, lowongan.lama_kegiatan, lowongan.deadline, lowongan.updated_at, rekruter.nama_perusahaan, rekruter.foto_logo, rekruter.tentang')->join('rekruter', 'rekruter.id=lowongan.id_rekruter')->findAll()
+    ];
+
+    return view('admin/table_lowongan', $data);
   }
 
   public function profile($id)

@@ -9,12 +9,13 @@ class LowonganModel extends Model
   protected $table = 'lowongan';
   protected $useTimestamps = true;
   protected $allowedFields = ['id' ,'id_rekruter', 'tipe', 'posisi', 'wilayah_penempatan', 'lama_kegiatan', 'deadline', 'created_at', 'updated_at'];
+  protected $primaryKey = 'id';
   // protected $useSoftDeletes = false;
 
-  public function getAllLowongan()
-  {
-    $this->findAll();
-  }
+  // public function getAllLowongan()
+  // {
+  //   $this->findAll();
+  // }
 
   public function getLowonganId()
   {
