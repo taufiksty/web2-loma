@@ -12,6 +12,8 @@ use App\Models\DLKualifikasiModel;
 use App\Models\DLDeskripsiModel;
 use App\Models\DLBenefitdllModel;
 
+use CodeIgniter\I18n\Time;
+
 class Admin extends BaseController
 {
   protected $AdminModel;
@@ -369,5 +371,33 @@ class Admin extends BaseController
     ];
 
     return view('admin/profile', $data);
+  }
+
+  public function editAdmin($id)
+  {
+    $data = [
+      'admin' => $this->AdminModel->getAdmin($id)
+    ];
+
+    return view('admin/edit_profile', $data);
+  }
+
+  public function simpanProfile($id)
+  {
+    $this->AdminModel->save([
+      'id' => $id,
+      'email' => $this->request->getVar('email'),
+      'nama' => $this->request->getVar('nama'),
+      'no_telp' => $this->request->getVar('no_telp'),
+      'location' => $this->request->getVar('location'),
+      'facebook' => $this->request->getVar('facebook'),
+      'twitter' => $this->request->getVar('twitter'),
+      'instagram' => $this->request->getVar('instagram'),
+      'updated_at' => Time::now()
+    ]);
+
+    session()->setFlashdata('message', 'Profil Anda Berhasil Diubah.');
+
+    return redirect()->to('Admin/index/'.$id);
   }
 }

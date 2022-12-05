@@ -33,6 +33,9 @@
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <!-- Main Styling -->
   <link href="<?= base_url(); ?>/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.42.1/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
@@ -271,18 +274,6 @@
       </div>
     </nav>
 
-    <?php if (session()->getFlashdata('message')) { ?>
-      <div class="mt-0 mb-3 left-1/2 w-auto z-10 fixed">
-        <div class="alert alert-success shadow-lg" role="alert">
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span><?php echo session()->getFlashdata('message'); ?></span>
-          <span class="ml-20 font-bold text-base cursor-pointer hover:bg-slate-500 hover:rounded hover:py-px hover:px-1" onclick="this.parentElement.classList.add('hidden')">&times;</span>
-        </div>
-      </div>
-    <?php }; ?>
-    
     <div class="w-full px-6 mx-auto">
       <div class="relative flex items-center p-0 mt-6 overflow-hidden bg-center bg-cover min-h-75 rounded-2xl" style="background-image: url('<?= base_url(); ?>/img/curved-images/curved0.jpg'); background-position-y: 50%">
         <span class="absolute inset-y-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-purple-700 to-pink-500 opacity-60"></span>
@@ -417,46 +408,61 @@
             </div>
           </div>
         </div>
+
         <div class="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12">
           <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-            <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
-              <div class="flex flex-wrap -mx-3">
-                <div class="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
-                  <h6 class="mb-0">Profile Information</h6>
-                </div>
-                <div class="w-full max-w-full px-3 text-right shrink-0 md:w-4/12 md:flex-none">
-                  <a href="<?= base_url(); ?>/Admin/editAdmin/<?= $admin['id']; ?>" data-target="tooltip_trigger" data-placement="top">
-                    <i class="leading-normal fas fa-user-edit text-sm text-slate-400"></i>
-                  </a>
-                  <div data-target="tooltip" class="hidden px-2 py-1 text-center text-white bg-black rounded-lg text-sm" role="tooltip">
-                    Edit Profile
-                    <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
+            <form action="<?= base_url(); ?>/Admin/simpanProfile/<?= $admin['id']; ?>" method="POST" name="formEditAdmin" id="formEditAdmin" enctype="multipart/form-data">
+              <?php csrf_field(); ?>
+              <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
+                <div class="flex flex-wrap -mx-3">
+                  <div class="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
+                    <h6 class="mb-0">Edit Profil Admin</h6>
                   </div>
+
                 </div>
               </div>
-            </div>
-            <div class="flex-auto p-4">
-              <p class="leading-normal text-sm">Hi, I’m <?= $admin['nama']; ?>, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).</p>
-              <hr class="h-px my-6 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-              <ul class="flex flex-col pl-0 mb-0 rounded-lg">
-                <li class="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit"><strong class="text-slate-700">Full Name:</strong> &nbsp; <?= $admin['nama']; ?></li>
-                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Mobile:</strong> &nbsp; <?= $admin['no_telp']; ?></li>
-                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Email:</strong> &nbsp; <?= $admin['email']; ?></li>
-                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Location:</strong> &nbsp; <?= $admin['location']; ?></li>
-                <li class="relative block px-4 py-2 pb-0 pl-0 bg-white border-0 border-t-0 rounded-b-lg text-inherit">
-                  <strong class="leading-normal text-sm text-slate-700">Social:</strong> &nbsp;
-                  <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center text-blue-800 align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none" href="javascript:;">
-                    <i class="fab fa-facebook fa-lg"></i>
-                  </a>
-                  <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none text-sky-600" href="javascript:;">
-                    <i class="fab fa-twitter fa-lg"></i>
-                  </a>
-                  <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none text-sky-900" href="javascript:;">
-                    <i class="fab fa-instagram fa-lg"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <div class="flex-auto p-4">
+                <div class="form-control w-full">
+                  <label class="label">
+                    <span class="label-text">Full Name</span>
+                  </label>
+                  <input type="text" placeholder="full name" class="input input-bordered input-sm w-full" name="name" id="name" value="<?= $admin['nama']; ?>" />
+                  <label class="label">
+                    <span class="label-text">Email</span>
+                  </label>
+                  <input type="email" placeholder="email" class="input input-bordered input-sm w-full" name="email" id="email" value="<?= $admin['email']; ?>" />
+                  <label class="label">
+                    <span class="label-text">No HP</span>
+                  </label>
+                  <input type="text" placeholder="no hp" class="input input-bordered input-sm w-full" name="no_telp" id="no_telp" value="<?= $admin['no_telp']; ?>" />
+                  <label class="label">
+                    <span class="label-text">Location</span>
+                  </label>
+                  <input type="text" placeholder="location" class="input input-bordered input-sm w-full" name="location" id="location" value="<?= $admin['location']; ?>" />
+                  <div class="flex flex-row">
+                    <div>
+                      <label class="label">
+                        <span class="label-text">Facebook</span>
+                      </label>
+                      <input type="text" placeholder="fb" class="input input-bordered input-sm w-full rounded-l-lg rounded-none" name="facebook" id="facebook" value="<?= $admin['facebook']; ?>" />
+                    </div>
+                    <div>
+                      <label class="label">
+                        <span class="label-text">Twitter</span>
+                      </label>
+                      <input type="text" placeholder="twitter" class="input input-bordered input-sm w-full rounded-none" name="twitter" id="twitter" value="<?= $admin['twitter']; ?>" />
+                    </div>
+                    <div>
+                      <label class="label">
+                        <span class="label-text">Instagram</span>
+                      </label>
+                      <input type="text" placeholder="ig" class="input input-bordered input-sm w-full rounded-r-lg rounded-none" name="instagram" id="instagram" value="<?= $admin['instagram']; ?>" />
+                    </div>
+                  </div>
+                  <button type="submit" form="formEditAdmin" value="submit" class="btn btn-accent btn-sm mt-4">&#10003;</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
         <div class="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12">
