@@ -45,6 +45,13 @@ class Pelamar extends BaseController
     return view('pelamar/edit_profil', $data);
   }
 
+  public function hapusLisensiSertifikasi($id_lis_ser, $id_pelamar)
+  {
+    $this->LisAndSerModel->delete($id_lis_ser);
+
+    return redirect()->to('/Pelamar/editProfil/'.$id_pelamar)->withInput();
+  }
+
   public function simpan($id)
   {
     if (!$this->validate([

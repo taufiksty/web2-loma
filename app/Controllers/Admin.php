@@ -398,6 +398,6 @@ class Admin extends BaseController
 
     session()->setFlashdata('message', 'Profil Anda Berhasil Diubah.');
 
-    return redirect()->to('Admin/index/'.$id);
+    // return redirect()->to('Admin/profile/'.$id);
   }
 }

@@ -39,14 +39,18 @@ $routes->get('/', 'LandingPage::index');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
-$routes->group('pelamar', ['filter' => 'role:pelamar'], function($routes) {
-    $routes->get('pelamar/(:num)', 'Pelamar::index/$1');
-    $routes->post('pelamar/editprofil/(:num)', 'Pelamar::editProfil/$1');
-});
+$routes->get('/pelamar/(:any)/(:any)', 'Pelamar::$1/$2', ['filter' => 'role:pelamar']);
+$routes->get('/rekruter/(:any)/(:any)', 'Rekruter::$1/$2', ['filter' => 'role:rekruter']);
+$routes->get('/admin/(:any)/(:any)/(:any)', 'Admin::$1/$2/$3', ['filter' => 'role:admin']);
+
+// $routes->group('pelamar', ['filter' => 'role:pelamar'], function($routes) {
+//     $routes->get('pelamar/(:num)', 'Pelamar::index/$1');
+//     $routes->post('pelamar/editprofil/(:num)', 'Pelamar::editProfil/$1');
+// });
 
 
-// $routes->get('/pelamar/(:num)', 'Pelamar::index/$1');
-// $routes->get('/rekruter/(:num)', 'Rekruter::index/$1');
+
+
 // $routes->get('/magang', 'Magang::index');
 // $routes->get('/magang/(:num)', 'Magang::detailLowongan/$1');
 $routes->get('/lamar/(:any)/(:num)', 'Pelamar::lamar/$1/$2');  

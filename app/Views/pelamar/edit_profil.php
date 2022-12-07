@@ -85,7 +85,7 @@
           <div class="form-control">
             <label class="label cursor-pointer">
               <span class="bg-white">Laki-laki</span>
-              <input type="radio" name="gender" class="radio checked:bg-primary" value="Laki-laki" checked/>
+              <input type="radio" name="gender" class="radio checked:bg-primary" value="Laki-laki" checked />
             </label>
           </div>
           <div class="form-control">
@@ -126,10 +126,10 @@
             <?php endforeach; ?>
           </div>
         </label>
-        
+
         <div class="flex justify-center mt-3 gap-5 w-full">
           <button type="button" class="btn btn-outline btn-info basis-4/12" id="tambahLisAndSer">+ Tambah</button>
-          <button type="button" class="btn btn-outline btn-error basis-4/12" id="hapusLisAndSer">- Hapus</button>
+          <a href="<?= base_url(); ?>/Pelamar/hapusLisensiSertifikasi/<?= $lis_and_ser[count($lis_and_ser) - 1]['id']; ?>/<?= $pelamar['id']; ?>" class="btn btn-outline btn-error basis-4/12" id="hapusLisAndSer">- Hapus</a>
         </div>
         <button type="submit" class="btn btn-accent my-12 px-12">Simpan</button>
       </div>

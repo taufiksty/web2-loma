@@ -33,7 +33,6 @@
   <link href="<?= base_url(); ?>/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.42.1/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
