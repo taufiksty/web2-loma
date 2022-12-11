@@ -9,6 +9,7 @@ use App\Models\DLDeskripsiModel;
 use App\Models\DLBenefitdllModel;
 use App\Models\LamaranModel;
 use CodeIgniter\I18n\Time;
+use Config\Services;
 use DateTime;
 
 class Rekruter extends BaseController
@@ -204,7 +205,7 @@ class Rekruter extends BaseController
       'deadline' => $this->request->getVar('deadline'),
       'created_at' => Time::now()
     ]);
-    
+
     $kualifikasi = $this->request->getVar('kualifikasi');
     $deskripsi_pekerjaan = $this->request->getVar('deskripsi_pekerjaan');
     $benefit_dll = $this->request->getVar('benefit_dll');
@@ -234,7 +235,21 @@ class Rekruter extends BaseController
     session()->setFlashdata('success', 'Lowongan berhasil ditambahkan.');
 
     return redirect()->to('/Rekruter/daftarLowongan/' . $id);
-    
+  }
+  
+  public function editLowongan($id_rekruter, $id_lowongan)
+  {
+    $data = [
+      'title' => 'Loma | Edit Lowongan',
+      'rekruter' => $this->RekruterModel->getRekruter($id_rekruter),
+      'lowongan' => $this->LowonganModel->where(['id' => $id_lowongan])->first(),
+      'dk' => $this->DLKualifikasiModel->getDLKualifikasi($id_lowongan),
+      'dd' => $this->DLDeskripsiModel->getDLDeskripsi($id_lowongan),
+      'db' => $this->DLBenefitdllModel->getDLBenefitdll($id_lowongan),
+      'validation' => \Config\Services::validation(),
+    ];
+
+    return view('rekruter/edit_lowongan', $data);
   }
 
   public function lihatLamaranMasuk($tipe, $id, $id_rekruter)
@@ -247,7 +262,7 @@ class Rekruter extends BaseController
     // }
 
     $detail_lowongan = $this->LowonganModel->getDetailLowongan($tipe, $id);
-    
+
     $tgl_update = new DateTime($detail_lowongan[0]['updated_at']);
     $tgl_now = Time::now();
     $interval = $tgl_now->diff($tgl_update);

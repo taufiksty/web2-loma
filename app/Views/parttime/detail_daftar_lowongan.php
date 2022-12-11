@@ -53,7 +53,7 @@
     </div>
     <div class="flex justify-end w-full mt-24">
       <a href="<?= base_url(); ?>/Parttime/hapusLowongan/<?= $detail_parttime[0]['id']; ?>/<?= $detail_parttime[0]['id_rekruter']; ?>" class="btn btn-error px-5 mr-5 font-medium text-base" onclick="confirm('Apakah anda yakin ingin menghapus lowongan? Pelamar yang telah melamar akan diberitahu secara otomatis.');">Hapus Lowongan</a>
-      <a class="btn btn-warning px-16 font-medium text-base">Edit Lowongan</a>
+      <a href="<?= base_url(); ?>/Rekruter/editLowongan/<?= $detail_parttime[0]['id_rekruter']; ?>/<?= $detail_parttime[0]['id']; ?>" class="btn btn-warning px-16 font-medium text-base">Edit Lowongan</a>
     </div>
   </div>
 </div>
