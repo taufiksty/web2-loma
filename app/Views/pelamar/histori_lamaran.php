@@ -13,7 +13,7 @@
     <!-- Left side contains option of profile and application history -->
     <div class="h-full place-items-start">
       <ul class="menu card rounded-box bg-base-300 md:w-56 fixed">
-        <li><a href="<?= base_url(); ?>/Pelamar/index/<?= $lamaran[0]['id_pelamar']; ?>">Profil</a></li>
+        <li><a href="<?= base_url(); ?>/Pelamar/index/<?= $pelamar['id']; ?>">Profil</a></li>
         <li><a href="#" class="active">Histori</a></li>
       </ul>
     </div>

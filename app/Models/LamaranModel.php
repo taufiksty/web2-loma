@@ -15,11 +15,11 @@ class LamaranModel extends Model
     return $this->select('lamaran.id,
                           lamaran.id_lowongan,
                           lamaran.id_pelamar,
+                          lamaran.updated_at,
                           rekruter.foto_logo,
                           rekruter.nama_perusahaan,
                           lowongan.tipe,
                           lowongan.posisi,
-                          lowongan.updated_at,
                           lowongan.deadline,
                           pelamar.foto_profil')
                 ->join('lowongan', 'lowongan.id=lamaran.id_lowongan')
@@ -30,9 +30,35 @@ class LamaranModel extends Model
                 ->findAll();
   }
 
+  public function getLamaranByIdLowongan($id_lowongan)
+  {
+    return $this->select('lamaran.id,
+                          lamaran.id_lowongan,
+                          lamaran.id_pelamar,
+                          lamaran.sk_mahasiswa_aktif,
+                          lamaran.cv,
+                          pelamar.nama,
+                          pelamar.email,
+                          pelamar.no_telp,
+                          pelamar.gender,
+                          pelamar.prodi,
+                          pelamar.univ,
+                          pelamar.foto_profil')
+                ->join('lowongan', 'lowongan.id=lamaran.id_lowongan')
+                ->join('pelamar', 'pelamar.id=lamaran.id_pelamar')
+                ->where(['lamaran.id_lowongan' => $id_lowongan])
+                ->orderBy('lamaran.created_at', 'ASC')
+                ->findAll();
+  }
+
   public function getAllLamaran()
   {
     return $this->findAll();
+  }
+
+  public function search($keyword)
+  {
+    $this->join('pelamar', 'pelamar.id=lamaran.id_pelamar')->like('nama', $keyword)->orLike('username', $keyword)->orLike('univ', $keyword)->orLike('prodi', $keyword);
   }
 
 }

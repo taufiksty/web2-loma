@@ -13,7 +13,7 @@
     <p class="mt-3 font-semibold text-lg"><?= $detail_volunteer[0]['nama_perusahaan']; ?></p>
     <p class="mt-3 text-lg"><?= $detail_volunteer[0]['wilayah_penempatan']; ?></p>
     <p class="mt-3 text-lg">Ditayangkan pada <?= $interval; ?> hari yang lalu</p>
-    <a href="" class="btn btn-accent mt-9">Lihat Lowongan Masuk</a>
+    <a href="<?= base_url(); ?>/Rekruter/lihatLamaranMasuk/Volunteer/<?= $detail_volunteer[0]['id']; ?>/<?= $detail_volunteer[0]['id_rekruter']; ?>" class="btn btn-accent mt-9">Lihat Lamaran Masuk</a>
   </div>
 
   <div class="grid flex-grow h-full card rounded-box place-items-center px-14 pt-5">

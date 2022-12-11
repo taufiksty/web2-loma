@@ -17,6 +17,14 @@ use CodeIgniter\I18n\Time;
 class Admin extends BaseController
 {
   protected $AdminModel;
+  protected $PelamarModel;
+  protected $RekruterModel;
+  protected $LowonganModel;
+  protected $LamaranModel;
+  protected $LisAndSerModel;
+  protected $DLKualifikasiModel;
+  protected $DLDeskripsiModel;
+  protected $DLBenefitModel;
 
   public function __construct()
   {

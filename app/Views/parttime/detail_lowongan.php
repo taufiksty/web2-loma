@@ -52,7 +52,7 @@
     </div>
     <div class="flex justify-end w-full mt-24">
       <p class="text-base font-normal mr-20 flex items-center">Merasa janggal dengan lowongan di atas? Laporkan <a href="" class="underline text-blue-500">di sini</a></p>
-      <a class="btn btn-primary px-20 font-bold text-lg">Lamar</a>
+      <a href="<?= base_url(); ?>/lamar/<?= $detail_parttime[0]['tipe'] ?>/<?= $detail_parttime[0]['id']; ?>/<?= $pelamar['id']; ?>" class="btn btn-primary px-20 font-bold text-lg">Lamar</a>
     </div>
   </div>
 </div>

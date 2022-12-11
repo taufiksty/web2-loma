@@ -29,20 +29,20 @@
           </svg>
         </label>
         <ul tabindex="0" class="navbar-options menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt active">Dashboard</a></li>
-          <li><a href="<?= base_url(); ?>/Magang/index" class="opt">Magang</a></li>
-          <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
-          <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
+          <li><a href="<?= base_url(); ?>/Pelamar/index/<?= $pelamar['id']; ?>" class="opt active">Dashboard</a></li>
+          <li><a href="<?= base_url(); ?>/Magang/index/<?= $pelamar['id']; ?>" class="opt">Magang</a></li>
+          <li><a href="<?= base_url(); ?>/Parttime/index/<?= $pelamar['id']; ?>" class="opt">Part-Time</a></li>
+          <li><a href="<?= base_url(); ?>/Volunteer/index/<?= $pelamar['id']; ?>" class="opt">Volunteer</a></li>
         </ul>
       </div>
       <a href="/LandingPage" class="btn btn-ghost normal-case text-2xl md:ml-5">Loma.</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="navbar-options menu menu-horizontal p-0">
-        <li><a href="<?= base_url(); ?>/Pelamar/index/" class="opt active">Dashboard</a></li>
-        <li><a href="<?= base_url(); ?>/Magang/index" class="opt">Magang</a></li>
-        <li><a href="<?= base_url(); ?>/Parttime/index" class="opt">Part-Time</a></li>
-        <li><a href="<?= base_url(); ?>/Volunteer/index" class="opt">Volunteer</a></li>
+        <li><a href="<?= base_url(); ?>/Pelamar/index/<?= $pelamar['id']; ?>" class="opt active">Dashboard</a></li>
+        <li><a href="<?= base_url(); ?>/Magang/index/<?= $pelamar['id']; ?>" class="opt">Magang</a></li>
+        <li><a href="<?= base_url(); ?>/Parttime/index/<?= $pelamar['id']; ?>" class="opt">Part-Time</a></li>
+        <li><a href="<?= base_url(); ?>/Volunteer/index/<?= $pelamar['id']; ?>" class="opt">Volunteer</a></li>
       </ul>
     </div>
     <div class="navbar-end mr-5 px-2">
@@ -57,12 +57,12 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="<?= base_url(); ?>/img/pelamar/<?= $lamaran[0]['foto_profil']; ?>" />
+            <img src="<?= base_url(); ?>/img/pelamar/<?= $pelamar['foto_profil']; ?>" />
           </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
           <li>
-            <a href="<?= base_url(); ?>/Pelamar/index/<?= $lamaran[0]['id_pelamar']; ?>" class="justify-between">
+            <a href="<?= base_url(); ?>/Pelamar/index/<?= $pelamar['id']; ?>" class="justify-between">
               Profile
               <span class="badge hidden">New</span>
             </a>

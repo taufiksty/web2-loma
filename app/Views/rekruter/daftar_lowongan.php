@@ -54,7 +54,7 @@
           <td><?= $dl['posisi']; ?></td>
           <td><?= date('d-m-Y', strtotime($dl['updated_at'])); ?></td>
           <td><?= date('d-m-Y', strtotime($dl['deadline'])); ?></td>
-          <td><a href="<?= base_url(); ?>/<?= $dl['tipe']; ?>/detailDaftarLowongan/<?= $dl['id']; ?>" class="btn btn-active btn-primary">Detail</a></td>
+          <td><a href="<?= base_url(); ?>/<?= $dl['tipe']; ?>/detailDaftarLowongan/<?= $dl['id']; ?>/<?= $rekruter['id']; ?>" class="btn btn-active btn-primary">Detail</a></td>
         </tr>
       </tbody>
     <?php endforeach; ?>

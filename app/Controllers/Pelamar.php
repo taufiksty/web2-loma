@@ -39,7 +39,7 @@ class Pelamar extends BaseController
       'title' => 'Loma | Edit Profil',
       'pelamar' => $this->PelamarModel->getPelamar($id),
       'lis_and_ser' => $this->LisAndSerModel->getLisAndSer($id),
-      'validation' => \Config\Services::validation()
+      'validation' => \Config\Services::validation(),
     ];
 
     return view('pelamar/edit_profil', $data);
@@ -150,13 +150,14 @@ class Pelamar extends BaseController
   {
     $data = [
       'title' => 'Loma | Histori Lamaran',
-      'lamaran' => $this->LamaranModel->getLamaran($id_pelamar)
+      'lamaran' => $this->LamaranModel->getLamaran($id_pelamar),
+      'pelamar' => $this->PelamarModel->getPelamar($id_pelamar),
     ];
 
     return view('pelamar/histori_lamaran', $data);
   }
 
-  public function lamar($tipe, $id_lowongan)
+  public function lamar($tipe, $id_lowongan, $id_pelamar)
   {
     $detail_lowongan = $this->LowonganModel->getDetailLowongan($tipe, $id_lowongan);
 
@@ -168,7 +169,7 @@ class Pelamar extends BaseController
       'title' => 'Loma | Lamar Lowongan',
       'detail_lowongan' => $detail_lowongan,
       'interval' => $interval->format('%D'),
-      'pelamar' => $this->PelamarModel->getPelamar(19211101),
+      'pelamar' => $this->PelamarModel->getPelamar($id_pelamar),
       'lamaran' => $this->LamaranModel,
       'validation' => \Config\Services::validation()
     ];

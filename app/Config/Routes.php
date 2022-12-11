@@ -39,17 +39,24 @@ $routes->get('/', 'LandingPage::index');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
-$routes->get('/pelamar/(:any)/(:any)', 'Pelamar::$1/$2', ['filter' => 'role:pelamar']);
-$routes->get('/rekruter/(:any)/(:any)', 'Rekruter::$1/$2', ['filter' => 'role:rekruter']);
-$routes->get('/admin/(:any)/(:any)/(:any)', 'Admin::$1/$2/$3', ['filter' => 'role:admin']);
+$routes->get('/admin/(:num)', 'Admin::index/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/datapelamar/(:num)', 'Admin::dataPelamar/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/datarekruter/(:num)', 'Admin::dataRekruter/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/profil/(:num)', 'Admin::profile/$1', ['filter' => 'role:admin']);
+$routes->put('/Admin/editPelamar/(:num)/(:num)', 'Admin::editPelamar/$1/$2', ['filter' => 'role:admin']);
+$routes->delete('/Admin/hapusLisensiSertifikasi/(:num)/(:num)/(:num)', 'Admin::hapusLisensiSertifikasi/$1/$2/$3', ['filter' => 'role:admin']);
+
+
+
+
+
+// $routes->get('/pelamar/(:any)/(:any)', 'Pelamar::$1/$2', ['filter' => 'role:pelamar']);
+// $routes->get('/rekruter/(:any)/(:any)', 'Rekruter::$1/$2', ['filter' => 'role:rekruter']);
 
 // $routes->group('pelamar', ['filter' => 'role:pelamar'], function($routes) {
 //     $routes->get('pelamar/(:num)', 'Pelamar::index/$1');
 //     $routes->post('pelamar/editprofil/(:num)', 'Pelamar::editProfil/$1');
 // });
-
-
-
 
 // $routes->get('/magang', 'Magang::index');
 // $routes->get('/magang/(:num)', 'Magang::detailLowongan/$1');

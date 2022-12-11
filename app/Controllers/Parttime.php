@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\LowonganModel;
+use App\Models\PelamarModel;
 use App\Models\RekruterModel;
 use App\Models\DLKualifikasiModel;
 use App\Models\DLDeskripsiModel;
@@ -14,6 +15,7 @@ use DateTime;
 class Parttime extends BaseController
 {
   protected $LowonganModel;
+  protected $PelamarModel;
   protected $RekruterModel;
   protected $DLKualifikasiModel;
   protected $DLDeskripsiModel;
@@ -22,13 +24,14 @@ class Parttime extends BaseController
   public function __construct()
   {
     $this->LowonganModel = new LowonganModel();
+    $this->PelamarModel = new PelamarModel();
     $this->RekruterModel = new RekruterModel();
     $this->DLKualifikasiModel = new DLKualifikasiModel();
     $this->DLDeskripsiModel = new DLDeskripsiModel();
     $this->DLBenefitdllModel = new DLBenefitdllModel();
   }
 
-  public function index()
+  public function index($id_pelamar)
   {
     $currentPage = $this->request->getVar('page_Parttime') ? $this->request->getVar('page_Parttime') : 1;
 
@@ -41,8 +44,7 @@ class Parttime extends BaseController
 
     $data = [
       'title' => 'Loma | Parttime',
-      // 'magang' => $this->MagangModel->getLowongan('Magang'),
-      // 'magang' => $this->MagangModel->getLowongan('Magang')
+      'pelamar' => $this->PelamarModel->getPelamar($id_pelamar),
       'parttime' => $parttime->getLowongan('Parttime', 10),
       'pager' => $parttime->pager,
       'current_page' => $currentPage
@@ -52,7 +54,7 @@ class Parttime extends BaseController
     return view('parttime/index', $data);
   }
   
-  public function detailLowongan($id)
+  public function detailLowongan($id, $id_pelamar)
   {
     $detail_parttime = $this->LowonganModel->getDetailLowongan('Parttime', $id);
     
@@ -67,13 +69,14 @@ class Parttime extends BaseController
       'dl_kualifikasi' => $this->DLKualifikasiModel->getDLKualifikasi($id),
       'dl_deskripsi' => $this->DLDeskripsiModel->getDLDeskripsi($id),
       'dl_benefit' => $this->DLBenefitdllModel->getDLBenefitdll($id),
+      'pelamar' => $this->PelamarModel->getPelamar($id_pelamar),
     ];
 
     // dd($data['detail_parttime']);
     return view('parttime/detail_lowongan', $data);
   }
 
-  public function detailDaftarLowongan($id)
+  public function detailDaftarLowongan($id, $id_rekruter)
   {
     $detail_parttime = $this->LowonganModel->getDetailLowongan('Parttime', $id);
     
@@ -82,6 +85,7 @@ class Parttime extends BaseController
     $interval = $tgl_now->diff($tgl_update);
 
     $data = [
+      'rekruter' => $this->RekruterModel->getRekruter($id_rekruter),
       'title' => 'Loma | Detail Lowongan',
       'detail_parttime' => $detail_parttime,
       'interval' => $interval->days,

@@ -7,11 +7,19 @@ use App\Models\LowonganModel;
 use App\Models\DLKualifikasiModel;
 use App\Models\DLDeskripsiModel;
 use App\Models\DLBenefitdllModel;
+use App\Models\LamaranModel;
 use CodeIgniter\I18n\Time;
+use DateTime;
 
 class Rekruter extends BaseController
 {
   protected $RekruterModel;
+  protected $LowonganModel;
+  protected $DLKualifikasiModel;
+  protected $DLDeskripsiModel;
+  protected $DLBenefitdllModel;
+  protected $LamaranModel;
+
 
   public function __construct()
   {
@@ -20,6 +28,7 @@ class Rekruter extends BaseController
     $this->DLKualifikasiModel = new DLKualifikasiModel();
     $this->DLDeskripsiModel = new DLDeskripsiModel();
     $this->DLBenefitdllModel = new DLBenefitdllModel();
+    $this->LamaranModel = new LamaranModel();
   }
 
   public function index($id)
@@ -226,5 +235,31 @@ class Rekruter extends BaseController
 
     return redirect()->to('/Rekruter/daftarLowongan/' . $id);
     
+  }
+
+  public function lihatLamaranMasuk($tipe, $id, $id_rekruter)
+  {
+    // $keyword = $this->request->getVar('keyword');
+    // if ($keyword) {
+    //   $lamaran = $this->LamaranModel->search($keyword);
+    // } else {
+    //   $lamaran = $this->LamaranModel;
+    // }
+
+    $detail_lowongan = $this->LowonganModel->getDetailLowongan($tipe, $id);
+    
+    $tgl_update = new DateTime($detail_lowongan[0]['updated_at']);
+    $tgl_now = Time::now();
+    $interval = $tgl_now->diff($tgl_update);
+
+    $data = [
+      'title' => 'Loma | Lihat Lamaran Masuk',
+      'rekruter' => $this->RekruterModel->getRekruter($id_rekruter),
+      'detail_lowongan' => $detail_lowongan,
+      'interval' => $interval->days,
+      'lamaran' => $this->LamaranModel->getLamaranByIdLowongan($id),
+    ];
+
+    return view('rekruter/lamaran_masuk', $data);
   }
 }
