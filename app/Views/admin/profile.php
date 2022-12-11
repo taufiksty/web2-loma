@@ -33,6 +33,8 @@
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <!-- Main Styling -->
   <link href="<?= base_url(); ?>/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.43.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -267,6 +269,21 @@
               </ul>
             </li>
           </ul>
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img src="<?= base_url(); ?>/img/admin/<?= $admin['foto_profil']; ?>" />
+              </div>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-slate-900">
+              <li>
+                <a href="<?= base_url(); ?>/Admin/profile/<?= $admin['id']; ?>" class="justify-between">
+                  Profile
+                </a>
+              </li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
@@ -282,7 +299,7 @@
         </div>
       </div>
     <?php }; ?>
-    
+
     <div class="w-full px-6 mx-auto">
       <div class="relative flex items-center p-0 mt-6 overflow-hidden bg-center bg-cover min-h-75 rounded-2xl" style="background-image: url('<?= base_url(); ?>/img/curved-images/curved0.jpg'); background-position-y: 50%">
         <span class="absolute inset-y-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-purple-700 to-pink-500 opacity-60"></span>
@@ -291,7 +308,7 @@
         <div class="flex flex-wrap -mx-3">
           <div class="flex-none w-auto max-w-full px-3">
             <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-              <img src="<?= base_url(); ?>/img/<?= $admin['foto_profil']; ?>" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+              <img src="<?= base_url(); ?>/img/admin/<?= $admin['foto_profil']; ?>" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
             </div>
           </div>
           <div class="flex-none w-auto max-w-full px-3 my-auto">

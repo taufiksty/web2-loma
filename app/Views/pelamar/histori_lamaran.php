@@ -49,7 +49,7 @@
 
             <!-- Button for the details -->
             <div class="card-actions justify-center my-5">
-              <a href="<?= base_url(); ?>" class="btn btn-primary px-10">Detail</a>
+              <a href="<?= base_url(); ?>/<?= $l['tipe']; ?>/detailLowongan/<?= $l['id_lowongan']; ?>/<?= $l['id_pelamar']; ?>" class="btn btn-primary px-10">Detail</a>
             </div>
           </div>
         </div>

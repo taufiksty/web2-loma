@@ -286,6 +286,21 @@
               </ul>
             </li>
           </ul>
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img src="<?= base_url(); ?>/img/admin/<?= $admin['foto_profil']; ?>" />
+              </div>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-slate-900">
+              <li>
+                <a href="<?= base_url(); ?>/Admin/profile/<?= $admin['id']; ?>" class="justify-between">
+                  Profile
+                </a>
+              </li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>

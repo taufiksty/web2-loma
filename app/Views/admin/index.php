@@ -32,6 +32,8 @@
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <!-- Main Styling -->
   <link href="<?= base_url(); ?>/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.43.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
@@ -277,6 +279,21 @@
               </ul>
             </li>
           </ul>
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img src="<?= base_url(); ?>/img/admin/<?= $admin['foto_profil']; ?>" />
+              </div>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-slate-900">
+              <li>
+                <a href="<?= base_url(); ?>/Admin/profile/<?= $admin['id']; ?>" class="justify-between">
+                  Profile
+                </a>
+              </li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
